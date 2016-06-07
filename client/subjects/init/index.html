@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="ui/appbar/appbar.css">
   </head>
   
-  <body> <!-- bootstrap the app with your module -->
+  <!-- BODY DEVE AVERE COME PARAMETRO NG-APP LA STESSO DICHIARATO SU angular.module-->
+  <body ng-app="artooInit"> <!-- bootstrap the app with your module -->
     <appbar>
       <div class="image">
         <img src="public/artoo-logo.png" alt="ArToo logo">
@@ -22,6 +23,8 @@
     
     <div ng-init="foo='Hooray! AngularJS is up and running!'" ng-bind="foo"></div>
     <!-- load angular -->
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
     <!-- load app module -->
+    <script type="text/javascript" src="subjects/init/app.js"></script>
   </body>
 </html>
