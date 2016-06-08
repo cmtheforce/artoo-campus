@@ -7,7 +7,6 @@ angular.module('artoo').controller('ItemsCtrl', ($scope, ItemsSrv) => {
     // $scope.items = ItemsSrv.get();
     
     //UTILIZZO LE ULTIME 2 PER PASSARE DEI PARAMETRI
-    // $scope.get = ItemsSrv.get();
     
     //SE HO PIU' METODI SCELGO QUESTA RISPETTO A QUELLA SOVRASTANTE
     //CONSIGLIATO

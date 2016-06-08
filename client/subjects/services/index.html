@@ -13,9 +13,14 @@
   <body ng-app="artoo">
     <appbar></appbar>
     <div ng-controller="PlayerCtrl">
-      <div>HP: {{PlayerSrv.getHp()}}</div>
+      <div>Level: {{PlayerSrv.get().level}}</div>
+      <div>HP: {{PlayerSrv.get().hp}}</div>
       <div>Is dead: {{PlayerSrv.isDead()}}</div>
-      <button ng-click="PlayerSrv.die()">Die</button>
+      <button ng-show="!(PlayerSrv.isDead())" ng-click="PlayerSrv.die()">Die</button>
+      <button ng-show="!(PlayerSrv.isDead())" ng-click="PlayerSrv.levelUp()">Level Up!!</button>
+      <button ng-show="!(PlayerSrv.isDead())" ng-click="PlayerSrv.takeHit(30)">Take hit</button>
+      <button ng-show="!(PlayerSrv.isDead())" ng-click="PlayerSrv.drinkPotion()">Drink potion</button>
+      <button ng-show="PlayerSrv.isDead()" ng-click="PlayerSrv.respawn()">Respawn</button>
       <div></div>
       <div></div>
       <div></div>

@@ -8,20 +8,23 @@ angular.module('artoo').service('PlayerSrv', function(){
         race : 'Gnome',
     }
     
+    this.get = () => {
+      return player;  
+    };
+    
     this.die = () => {
         player.hp = 0;
     };
     
     this.drinkPotion = () => {
         
+        if(this.isDead()) return;
+        var hp = player.hp + 50;
+        player.hp = (hp > 100) ? 100 : hp;
     };
 
     this.gainExp = () => {
         
-    };
-    //SERVE PER PRENDERE I DATI RISERVANDO I DATI
-    this.getHp= () => {
-        return player.hp;
     };
     
     this.isDead = () => {
@@ -29,21 +32,17 @@ angular.module('artoo').service('PlayerSrv', function(){
         //!! PRENDE IL VALORE BOOLEAN
         return !(!!player.hp);
     };
-    
-    this.levelUp = () =>{
-        
+    this.levelUp = () => {
+        player.level += 1;
     };
     
     this.respawn = () => {
-        
+        if(!(this.isDead()))return;
+        player.hp = 10;
     };
    
-    this.takeHit = () => {
-        
+    this.takeHit = (damage) => {
+        var hp = player.hp - damage;
+        player.hp = (hp <= 0) ? 0 : hp
     };
-    
-    
-   
-    
-    
 });
