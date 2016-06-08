@@ -13,19 +13,28 @@
     <appbar></appbar>
     
     <!-- numeric operations -->
-    <div>3 + 7 = </div>
+    <div>3 + 7 = {{3 + 7}}</div>
     
     <!-- operations on strings -->
-    <div>foo + bar = </div>
+    <div>foo + bar = {{'foo' + 'bar'}}</div>
     
-    <div ng-init="user = {name: 'John', surnmae: 'Doe', age: 27}">
+    <!-- LA LISTA E' UN OGGETTO ORDINATO-->
+    <!-- OGGETTO E' L'ELEMENTO SINGOLO -->
+    <div ng-init="user = {name: 'John', surname: 'Doe', age: 27}">
       <!-- interpolation -->
-      <div>Il mio nome è: </div>
-      <div>La mia età è: </div>
+      <div>Il mio nome è: {{user.name}}</div>
+      <div>La mia età è: {{user.age}}</div>
+      <div>La mia età è: <span ng-bind="::user.age"></span></div>
+      <!-- ONE TIME BINDING : BINDA MA NON RIMANE IN ASCOLTO (ON WATCH)-->
+      <!-- LA VARIABILE IN BACKGROUND AUMENTA DI VALORE -->
+      <div ng-init="currentYear = 2016">Ora siamo nell'anno: {{::currentYear}} </div>
       
-      <div ng-init="currentYear = 2016">Ora siamo nell'anno: </div>
+      <div>Reactive year: {{currentYear}}</div>
       
       <!-- understanding the one-time binding with a +1 button -->
+      <!-- NON POSSO FARE ++ PERCHE' SONO NELLA VIEW -->
+      <button ng-click="currentYear = currentYear + 1">+1 year</button>
+      
     </div>
     
     <script src="node_modules/angular/angular.min.js"></script>
