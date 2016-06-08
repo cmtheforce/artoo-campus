@@ -24,7 +24,9 @@
       <!-- interpolation -->
       <div>Il mio nome è: {{user.name}}</div>
       <div>La mia età è: {{user.age}}</div>
+      <!--MODO ALTERNATIVO PER BINDARE UNA VARIABILE  -->
       <div>La mia età è: <span ng-bind="::user.age"></span></div>
+      
       <!-- ONE TIME BINDING : BINDA MA NON RIMANE IN ASCOLTO (ON WATCH)-->
       <!-- LA VARIABILE IN BACKGROUND AUMENTA DI VALORE -->
       <div ng-init="currentYear = 2016">Ora siamo nell'anno: {{::currentYear}} </div>

@@ -7,26 +7,66 @@
     <title>Artoo Campus - Controllers</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="ui/appbar/appbar.css">
+    <link rel="stylesheet" href="ui/form/form.css">
   </head>
   
   <body ng-app="artoo">
     <appbar></appbar>
-    
-    <!-- load the item controller -->
-    
+
     <!-- bind the item controller to an element -->
+    <div ng-controller="ItemsCtrl" ng-hide="!item">
+      <!-- interpolate the data to the view -->
+      <div>
+        <!-- SI POTEVA SCRIVERE ANCHE COME Name: {{item.name}}-->
+        Name: <span ng-bind="item.name"></span>
+      </div>
+      <div ng-show="visibleDescription">
+        Description: <span ng-bind="item.description"></span>
+      </div> 
+      <!-- add handles for behaviours -->
+      <button ng-click="toggleDescription()">Toggle description</button>
+      <div>
+        Slots: <span ng-bind="item.slots"></span>
+      </div> 
+      <div>
+        Fits in bag? {{checkIfFits (item, 5)}}
+      </div>
+      <div>
+        <!-- PRENDE UNA STRINGA -->
+        <!-- NASCONDO L'OGGETTO SE NON ESISTE ITEM -->
+        <img ng-hide="!item" ng-src="{{item.image}}" alt=""></span>
+      </div>
+      <button ng-hide="!item" ng-click="dispose()">Dispose</button>
+    </div>
+    <div ng-controller="PlayerCtrl">
+      <div>Player name: {{::player.name}}</div>
+      <div>Race: {{::player.race}}</div>
+      <div>HP:{{player.hp}} </div>
+      <div>Is player dead? {{isDead()}} </div>
+      <div>EXP: {{player.exp}}</div>
+      <div>Level: {{player.level}}</div>
+      
+      <button ng-click="takeDamage(30)">Take Damage</button>
+      <button ng-click="gainExp(10)">Get Experience</button>
+      <button ng-click="levelUp()">Level Up</button>
+        
+    </div>
     
-    <!-- interpolate the data to the view -->
     
     <!-- understanding the scope -->
     
-    <!-- add handles for behaviours -->
+    
+    
+    
     
     <!-- create another controller for the player for managing data such as personal and game info -->
     
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="ui/appbar/appbar.js"></script>
-
+   
     <script src="subjects/controllers/app.js"></script>
+    <!-- load the item controller -->
+    <script src="subjects/controllers/item.controller.js"></script>
+    <script src="subjects/controllers/player.controller.js"></script>
   </body>
 </html>
