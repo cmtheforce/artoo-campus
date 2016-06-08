@@ -1,3 +1,4 @@
+//POSSO ANCHE UTILIZZARE IL NONNO CHE E' SINGLETON (SEMPRE UN UNICA ISTANCE) $rootScope
 angular.module('artoo').controller('PlayerCtrl', ($scope) => {
     
     $scope.player = {
