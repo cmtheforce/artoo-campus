@@ -13,8 +13,47 @@
   <body ng-app="artoo">
     <appbar></appbar>
     
-    <!-- implement a form for inserting items -->
+    <div ng-controller="ItemsCtrl">
+      <select name="select" ng-options="options.code as options.name for options in ItemsSrv.get()" ng-model="selectedItem"
+      ng-change="selectItem(selectedItem)"></select>
+      <!-- implement a form for inserting items -->
+      <form name="form" ng-show="item" ng-submit="update(item, form)" novalidate autocomplete="off">
+        <div class="row">
+          <input type="text" name="name" ng-model="item.name" required>
+          <label>input</label>
+        </div>
+        
+        <div class="row">
+          <textarea name="description" rows="3" ng-model="item.description" type="text" required></textarea>
+          <label>Description</label>
+        </div>
+        
+        <div class="row">
+          <input type="text" name="image" ng-model="item.image" required>
+          <label>Image</label>
+        </div>
+        
+        <!-- DISABILITO IL BOTTONE FINCHE' NON HO INSERITO TUTTI I VALORI RICHIESTI-->
+        <button ng-disabled="form.$invalid">Send</button>
+        <a href ng-click="resetForm(form)">Reset</a>
+      </form>
     
+      <!--<div>Dirty: {{form.$dirty}}</div>-->
+      <!--<div>Pristine: {{form.$pristine}}</div>-->
+      <!--<div>Valid: {{form.$valid}}</div>-->
+      <!--<div>Invalid: {{form.$invalid}}</div>-->
+      <!--<div>Error: {{form.$error}}</div>-->
+      <!--<div>Submitted: {{form.$submitted}}</div>-->
+      
+      <div style="margin: 10px auto" ng-repeat="item in ItemsSrv.get()">
+        <div>Name: {{item.name}}</div>
+        <div>Description: {{item.description}}</div>
+        <!-- PICTURE SERVE PER GLI IPOVEDENTI-->
+        <div><img ng-src="{{item.image}}" alt="{{item.name}} picture"></div>
+      </div>
+     
+      
+    </div>
     <!-- interpolate results -->
     
     <!-- validate the form -->
@@ -29,5 +68,6 @@
     <script src="ui/appbar/appbar.js"></script>
     <script src="subjects/forms/app.js"></script>
     <script src="subjects/forms/items.controller.js"></script>
+    <script src="subjects/forms/items.service.js"></script>
   </body>
 </html>
