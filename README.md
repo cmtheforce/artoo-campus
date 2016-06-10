@@ -44,7 +44,7 @@ ReallyPowerfulGame
 * As a user, I can choose the number of players.
 * As a user, I can choose a class for each player.
 * As a user, I can use my items (weapon, armor and consumable) in the inventory.
-** 
+    * sadsad
 * As a user, I can change my inventory.
 * As a user, I can start an adventure divided into chapters.
 * As a user, I can run into an event (monster or special situation).
