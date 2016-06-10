@@ -1,0 +1,13 @@
+.item{
+    border: 2px dashed #333;
+    margin: 10px 0;
+    padding: 10px;
+    /*FA LA TRANSIZIONE IN .3s INIZIO E FINE LENTA*/
+    transition: all .3s ease-in-out;
+}
+.item.available{
+    border-color: green;
+}
+.item.unavailable{
+    border-color: red;
+}
