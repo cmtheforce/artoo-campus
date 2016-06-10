@@ -7,22 +7,60 @@
     <title>Artoo Campus - Filters</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="ui/appbar/appbar.css">
-    <link rel="stylesheet" href="ui/form/form.css">
+    <!--<link rel="stylesheet" href="ui/form/form.css">-->
   </head>
   
   <body ng-app="artoo">
     <appbar></appbar>
     
-    <!-- get a list of items -->
-    <ul>
-      <li ng-repeat="item in ::items">{{::item}}</li>
-    </ul>
-    
+    <div ng-controller="ItemsCtrl">
+      
+      <h2>Order by</h2>
+      <!-- CREO UNA SELECT PER SCEGLIERE COME FILTRARE LA LISTA-->
+      <select name="orderBySelect" ng-options="option.prop as option.title for option in orderByOptions" ng-model="selectedOrderByOption"></select>
+      
+      <label>Reverse?
+        <input type="checkbox" ng-model="selectedReverse">
+      </label>
+      
+      <h2>Filter</h2>
+      <form>
+        <!-- CREO UN INPUT DOVE DINAMICAMENTE APPLICO IL FILTRO CON LE RADIO-->
+        <input type="text" ng-model="search[selectedFilterProp]">
+        <label> Suitability?
+          <input type="checkbox" ng-model="onlySuitable">
+        </label>
+        <label> ALL
+        <!-- IL PARAMETRO DOLLARO CERCA IN TUTTE LE PROPRIETA'-->
+          <input type="radio" ng-model="selectedFilterProp" value="$">
+        </label>
+        <label> NAME
+          <input type="radio" ng-model="selectedFilterProp" value="name">
+        </label>
+        <label> DESCRIPTION
+          <input type="radio" ng-model="selectedFilterProp" value="description">
+        </label>
+      </form>
+      <h2>Items</h2>
+      <ul style="list-style: none">
+        <!-- get a list of items -->
+        <!-- INSERISCO I FILTRI IN UN BLOCCO PRIMO PARAMETRO OGGETTO, SECONDO BOOLEAN-->
+        <!-- PRIMA METTO IL FILTRO FILTER PER QUESTIONI DI PERFORMANCE -->
+        <li ng-repeat="item in items | suitability:onlySuitable | filter:search | orderBy:selectedOrderByOption:selectedReverse">
+          <h3>NAME: {{::item.name}}, PRICE: {{::item.price | price:false}}, AVAILABILITY: {{::item.availability | availability}}</h3>
+          <p>{{::item.description}}</p>
+          <p>RACES: {{::item.races | races}}</p>
+          <p>SUITABLE? {{item.races | suitable | yesOrNo}}</p>
+          <p>Created at: {{item.createdAt | date:'dd/MM/yyyy'}} at {{item.createdAt | date:'hh:mm:ss:ms'}}</p>
+          <hr>
+        </li>
+      </ul>
+    </div>
     <!-- sort items by price -->
     
     <!-- sort items by name -->
     
-    <!-- filter items for name -->
+    <!-- filter items by name -->
     
     <!-- implement a filter for prices -->
     
@@ -35,5 +73,9 @@
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="ui/appbar/appbar.js"></script>
     <script src="subjects/filters/app.js"></script>
+    <script src="subjects/filters/items.controller.js"></script>
+    <script src="subjects/filters/items.filter.js"></script>
+    <script src="subjects/filters/text.filter.js"></script>
+    <script src="subjects/filters/player.service.js"></script>
   </body>
 </html>
