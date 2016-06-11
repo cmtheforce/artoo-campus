@@ -56,7 +56,6 @@ ReallyPowerfulGame
 * As a user, I can change my inventory.
 * As a user, I can start an adventure divided into chapters.
     * Each chapters are composed by events.
-    * 
 * As a user, I can run into an event (monster or special situation).
 * As a user, I can inflict damage to a monster.
 * As a user, I can receive damage from a monster.
