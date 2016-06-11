@@ -61,7 +61,6 @@ ReallyPowerfulGame
 * As a user, I can receive damage from a monster.
 * As a user, I can receive a reward from an event.
 * As a user, I can solve special events according to a class.
-*
 
 
 

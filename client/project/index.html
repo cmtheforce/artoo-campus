@@ -5,14 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
     <title>Artoo Campus - Project</title>
+    <!--<link rel="stylesheet" href="ui/appbar/appbar.css">-->
+    <!--<link rel="stylesheet" href="ui/form/form.css">-->
   </head>
   
-  <body style="margin: 0;">
+  <body ng-app="artoo" style="margin: 0;">
     
+    <div ng-controller="PlayerCtrl">
+      
+      <form name="form" ng-submit="" novalidate autocomplete="off">
+        <div class="row">  
+          <label> Nome giocatore: 
+            <input type="text" ng-model="player.name">
+          </label>
+          <hr>
+         </div> 
+        <div class="row">
+          <label>
+            <input type="radio" ng-model="player.sex" value="maschio">
+            Maschio
+          </label>
+          <label>
+            <input type="radio" ng-model="player.sex" value="femmina">
+            Femmina
+          </label>
+          <hr>
+        </div>
+        <div class="row">
+          <label for="select"> Selezionare ruolo: </label><br>
+          <!--item.ID as item.Title for item in items-->
+            <select name="roleSelect" ng-model="player.role" ng-options="role.id as role.name for role in RoleSrv.get()">
+              <!--<option value="option-1">Option 1</option>-->
+              <!--<option value="option-2">Option 2</option>-->
+            </select>
+        </div>
+        <button ng-click="PlayerSrv.addPlayer(player)">TEST</button>
+
+        
+      </form>
+    </div>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="ui/appbar/appbar.js"></script>
+    <script src="project/app.js"></script>
     
-    <!-- to be removed -->
-    <!--<div style="align-items: center; display:flex; flex-direction: column; height: 100vh; justify-content: center;">-->
-    <!--  <h1 style="border: 2px dashed #dedede; color: #dedede; padding: 50px;">Place here your project!</h1>-->
-    <!--</div>-->
+    <script src="project/Monster/monster.controller.js"></script>
+    <script src="project/Monster/monster.service.js"></script>
+    <script src="project/Player/player.controller.js"></script>
+    <script src="project/Player/player.service.js"></script>
+    <script src="project/Player/role.service.js"></script>
   </body>
 </html>
