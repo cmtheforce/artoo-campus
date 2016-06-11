@@ -45,7 +45,7 @@ ReallyPowerfulGame
 * Niki Andreozzi
 * Raffaele Pianella
 
-### Stories
+### Stories Test
 
 * As a user, I can choose the number of players.
 * As a user, I can choose a class for each player.
