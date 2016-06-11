@@ -45,7 +45,7 @@ ReallyPowerfulGame
 * Niki Andreozzi
 * Raffaele Pianella
 
-### Stories Test
+### Stories
 
 * As a user, I can choose the number of players.
 * As a user, I can choose a class for each player.
@@ -61,6 +61,7 @@ ReallyPowerfulGame
 * As a user, I can receive damage from a monster.
 * As a user, I can receive a reward from an event.
 * As a user, I can solve special events according to a class.
+*
 
 
 
