@@ -15,11 +15,33 @@
     <!-- create a component for the filter and order tools -->
     
     <!-- create a component for the items properties -->
+    <!--<items></items>-->
     
+    <!-- SI TRATTA DEL transclude CIOE' UTILIZZARE UN TEMPLATE E SUCCESSIVAMENTE
+    INSERIRE DEI BLOCCHI CUSTOM-->
+    <artoo-frame>
+      <div>asdsadsadsad</div>
+    </artoo-frame>
+    
+    <artoo-frame>
+      <ul>
+        <li ng-repeat="i in [0,1,2]">{{$index}}</li>
+      </ul>
+    </artoo-frame>
+  
+    <!--<items typology="armors"></items>-->
+    <!--<items typology="weapons"></items>-->
     <!-- create a component for the items and apply to the armors -->
     
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="ui/appbar/appbar.js"></script>
     <script src="subjects/components/app.js"></script>
+    <script src="subjects/components/items/items.component.js"></script>
+    <script src="subjects/components/items/items.controller.js"></script>
+    <script src="subjects/components/items/items.service.js"></script>
+    <script src="subjects/components/item/item.component.js"></script>
+    <script src="subjects/components/item/item.controller.js"></script>
+    
+    <script src="subjects/components/artoo-frame.component.js"></script>
   </body>
 </html>

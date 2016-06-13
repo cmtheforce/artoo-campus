@@ -1,0 +1,12 @@
+<form>
+    <label>
+        Weapons
+        <input type="radio" value="weapons" ng-model="ItemsCtrl.typology">
+    </label>
+    <label>
+        Armors
+        <input type="radio" value="armors" ng-model="ItemsCtrl.typology">
+    </label>
+</form>
+<!-- GLI PASSO LA TYPOLOGY PER SCEGLIERE QUALE LISTA VEDERE-->
+<item data="item" ng-repeat="item in ItemsCtrl.ItemsSrv.get(ItemsCtrl.typology)"></item>

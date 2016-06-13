@@ -36,9 +36,11 @@ angular.module('artoo').service('RoleSrv',function() {
     //METODO PER TROVARE IL RUOLO DI UN GIOCATORE
     this.getRole = (idRolePlayer, levelPlayer) => {
         
-        roles.forEach((singleRole) => {
+        roles.forEach((singleRole) => { //find
            
             if(singleRole.id === idRolePlayer){
+              var test= angular.copy(singleRole); //Facciamo una copia per nn intaccare l'objc origin
+              
              //Calcolo gli hp del player in base al livello
             // singleRole.hp_lv =  singleRole.hp_lv * levelPlayer;
               
@@ -48,14 +50,17 @@ angular.module('artoo').service('RoleSrv',function() {
              //Calcolo l'attacco del player in base al livello
             // singleRole.attack_lv = singleRole.attack_lv * levelPlayer;
                
-              var test= angular.copy(singleRole);
+             
               
              //this.role=singleRole;
-             return test;
  
             }
-            
-        });
+        }
+        
+        
+        );
+        
+        return test;
     }
     
     

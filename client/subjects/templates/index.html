@@ -18,8 +18,10 @@
     <div ng-include="'subjects/templates/description.html'"></div>
     
     <!-- build the description section dynamically with ng-repeat -->
-    <div ng-repeat="item in [0,1,2]">
-      <div ng-include="'subjects/templates/item.html'"></div>
+    <div ng-controller="">
+      <div ng-repeat="item in [0,1,2]">
+        <div ng-include="'subjects/templates/item.html'"></div>
+      </div>
     </div>
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="ui/appbar/appbar.js"></script>
