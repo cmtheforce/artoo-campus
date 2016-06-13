@@ -5,56 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
     <title>Artoo Campus - Project</title>
-    <!--<link rel="stylesheet" href="ui/appbar/appbar.css">-->
+    <link rel="stylesheet" href="project/playerBar/playerbar.css">
     <!--<link rel="stylesheet" href="ui/form/form.css">-->
   </head>
   
   <body ng-app="artoo" style="margin: 0;">
-    
-    <div ng-controller="PlayerCtrl">
-      
-      <form name="form" ng-submit="" novalidate autocomplete="off">
-        <div class="row">  
-          <label> Nome giocatore: 
-            <input type="text" ng-model="player.name">
-          </label>
-          <hr>
-         </div> 
-        <div class="row">
-          <label>
-            <input type="radio" ng-model="player.sex" value="maschio">
-            Maschio
-          </label>
-          <label>
-            <input type="radio" ng-model="player.sex" value="femmina">
-            Femmina
-          </label>
-          <hr>
-        </div>
-        <div class="row">
-          <label for="select"> Selezionare ruolo: </label><br>
-          <!--item.ID as item.Title for item in items-->
-            <select name="roleSelect" ng-model="player.role" ng-options="role.id as role.name for role in PlayerSrv.getRoles()">
-              <!--<option value="option-1">Option 1</option>-->
-              <!--<option value="option-2">Option 2</option>-->
-            </select>
-        </div>
-        
-        <button ng-click="PlayerSrv.addPlayer(player)">ADD Player</button>
-        <button ng-click="PlayerSrv.getPlayers()">List Players</button>
-        
-        <button ng-click="PlayerSrv.test()">TEST</button>
-      </form>
-    </div>
+    <!-- BARRA SUPERIORE LISTA PERSONAGGI-->
+    <player-bar></player-bar>
+    <!--BLOCCO CREAZIONE PERSONAGGIO-->
+    <player></player>
+    <!--<story></story>-->
 
+ 
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="ui/appbar/appbar.js"></script>
     <script src="project/app.js"></script>
+    <script src="project/playerBar/playerbar.component.js"></script>
+     
+    <script src="project/monster/monster.controller.js"></script>
+    <script src="project/monster/monster.service.js"></script>
     
-    <script src="project/Monster/monster.controller.js"></script>
-    <script src="project/Monster/monster.service.js"></script>
-    <script src="project/Player/player.controller.js"></script>
-    <script src="project/Player/player.service.js"></script>
-    <script src="project/Player/role.service.js"></script>
+    <script src="project/player/player.controller.js"></script>
+    <script src="project/player/player.service.js"></script>
+    <script src="project/player/player.component.js"></script>
+    <script src="project/player/player.filter.js"></script>
+    <script src="project/player/role.service.js"></script>
+    
+    <script src="project/story/story.service.js"></script>
+    <script src="project/story/story.component.js"></script>
+    <script src="project/story/story.controller.js"></script>
   </body>
 </html>

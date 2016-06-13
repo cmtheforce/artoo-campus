@@ -1,0 +1,17 @@
+ <div class="menu">
+ <div ng-repeat= "player in PlayerCtrl.PlayerSrv.getPlayers()">
+     <!--<div ng-hide="PlayerCtrl.PlayerSrv.getPlayers().length" class="menu">-->
+     <div style="float: left; padding-left:2%; padding-top: 2%;">
+         <img src="{{player.image}}"/>
+     </div>
+     
+    <div style="float: left; padding: 1%; width: 23%;">
+        
+          <div>Name: {{player.name}}</div>
+          <div>Level: {{player.level}}</div>
+          <div>HP: {{player.hp}} / {{player.hpMax}}</div>
+          <div>Mana: {{player.mana}} / {{player.manaMax}}</div>
+          <div>Money: {{player.gold | gold}}</div>
+    </div>
+ </div>
+ </div>    
