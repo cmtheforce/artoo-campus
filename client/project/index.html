@@ -34,13 +34,14 @@
         <div class="row">
           <label for="select"> Selezionare ruolo: </label><br>
           <!--item.ID as item.Title for item in items-->
-            <select name="roleSelect" ng-model="player.role" ng-options="role.id as role.name for role in RoleSrv.get()">
+            <select name="roleSelect" ng-model="player.role" ng-options="role.id as role.name for role in PlayerSrv.getRoles()">
               <!--<option value="option-1">Option 1</option>-->
               <!--<option value="option-2">Option 2</option>-->
             </select>
         </div>
-        <button ng-click="PlayerSrv.addPlayer(player)">TEST</button>
-
+        
+        <button ng-click="PlayerSrv.addPlayer(player)">ADD Player</button>
+        <button ng-click="PlayerSrv.getPlayers()">TEST</button>
         
       </form>
     </div>
