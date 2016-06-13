@@ -77,6 +77,11 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv){
         });
     }  
   
+  this.test = () => {
+   var a=RoleSrv.getRole(0,1);
+   console.log(a);
+  };
+  
   this.addPlayer = (params) => {
     var player = angular.copy(params);
     params= {};
