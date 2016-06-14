@@ -38,7 +38,7 @@ angular.module('artoo').service('RoleSrv', function() {
     
     //METODO PER TROVARE IL RUOLO DI UN GIOCATORE
     this.getRole = (idRolePlayer, levelPlayer) => {
-        //statRole è la copia del object trovato nel Find
+        
         var statRole = angular.copy(roles.find(singleRole => singleRole.id === idRolePlayer));
         
         //Calcolo gli hp del player in base al livello
@@ -52,18 +52,5 @@ angular.module('artoo').service('RoleSrv', function() {
         
         return statRole;
     };
-       
-    
-
-
-
-
-
-
-
-
-
-
- 
 });
 

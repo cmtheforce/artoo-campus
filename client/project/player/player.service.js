@@ -31,8 +31,8 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv){
    
     var player = angular.copy(params);
     params= {};
+    
     //Funzione che mi ritorna le statistiche in base al livello del PG 
- 
     var role=RoleSrv.getRole(player.role, 1);
  
     //Incremento id per aggiunta nuovi Player  
@@ -48,6 +48,8 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv){
     //Setto Statistiche iniziali
     player.hp=hpMax;
     player.mana=manaMax;
+    
+ 
     player.att=role["attackLv"] || 0;
     player.dif=0;
     player.gold= 0;
@@ -84,6 +86,5 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv){
     player.hp=0;  
   };
   
-
-  
+   
 });

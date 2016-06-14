@@ -1,0 +1,23 @@
+<md-toolbar class="md-tall md-accent" layout="row" layout-align="space-around center">
+  <div ng-repeat="player in PlayerCtrl.PlayerSrv.getPlayers()" flex>
+   <div layout="row" layout-padding>
+    <div layout-align="center center" layout="column" >
+     <img src="{{player.image}}"/>
+    </div>
+      <div layout="column">
+        <div>Name: {{player.name}}   Lv.{{player.level}} </div>
+        <!--<div>Level: {{player.level}}</div>-->
+        <!--<div>HP: {{player.hp}} / {{player.hpMax}}</div>-->
+        <div layout="column">
+          <div flex> HP: {{player.hp}} / {{player.hpMax}}</div>
+          <md-progress-linear class="hp" md-mode="determinate" value="100"></md-progress-linear>
+        </div>
+        <div layout="column">
+          <div flex> Mana: {{player.mana}} / {{player.manaMax}}</div>
+          <md-progress-linear class="mana" md-mode="determinate" value="player.manaPerc"></md-progress-linear>
+        </div>
+        <!--<div>Money: {{player.gold | gold}}</div>-->
+      </div>
+     </div>
+  </div>
+</md-toolbar>

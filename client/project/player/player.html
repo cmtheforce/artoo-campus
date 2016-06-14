@@ -1,29 +1,45 @@
-<form name="form" ng-submit="" novalidate autocomplete="off" >
-    <div class="row" style="padding-top: 10%;">  
-        <label> Nome giocatore:
-            <input type="text" ng-model="PlayerCtrl.player.name" required >
-           <label ng-show=(PlayerCtrl.errorName) style="color:red;">Nome esistente</label>
-        </label>
+<form name="form" ng-submit="" novalidate autocomplete="off" 
+      ng-show="PlayerCtrl.ForeingSrv.checkVisibilityCreation">
+    <div layout="column" layout-margin>
+        <label class="md-display-2"> Creazione del personaggio </label> 
+        <md-input-container>
+            <label class="md-title"> Nome personaggio: </label>
+            <input ng-model="PlayerCtrl.player.name" required>
+        </md-input-container>
+        <label class="md-display-1"> Sesso: </label> 
     </div> 
-    <hr>
-    <div class="row">
-        <label>
-            <input type="radio" ng-model="PlayerCtrl.player.sex" value="m">
-            Maschio
-        </label>
-        <label>
-            <input type="radio" ng-model="PlayerCtrl.player.sex" value="f">
-            Femmina
-        </label>
+     <md-radio-group ng-model="PlayerCtrl.player.sex" layout="row" layout-margin>
+      <md-radio-button value="m">Maschio</md-radio-button>
+      <md-radio-button value="f"> Femmina </md-radio-button>
+    </md-radio-group>
+    <div layout="column" layout-margin>
+        <label class="md-display-1" layout-margin> Ruolo: </label> 
+        <md-input-container  >
+             <md-select ng-model="PlayerCtrl.player.role" required>
+                 <!-- PER FAR PASSARE UN INT DALLA SELECT OCCORRE UTILIZZARE ng-value-->
+              <md-option ng-repeat=" role in PlayerCtrl.RoleSrv.get()" ng-value="role.id">
+                  {{role.name}}
+              </md-option>
+        </md-input-container>
     </div>
-    <hr>
-    <div class="row">
-        <label for="select"> Selezionare ruolo: </label><br>
-       
-        <select required name="roleSelect" ng-model="PlayerCtrl.player.role" ng-options="role.id as role.name for role in PlayerCtrl.RoleSrv.get()"></select>
+
+    <div layout="row">
+        <md-container>    
+            <md-button ng-hide="PlayerCtrl.PlayerSrv.getPlayers().length ==3" 
+                       class="md-raised md-primary"
+                       ng-click="PlayerCtrl.savePlayer(PlayerCtrl.player)"
+                       ng-disabled="form.$invalid"> Conferma personaggio </md-button>
+                       
+            <md-button ng-show="PlayerCtrl.PlayerSrv.getPlayers().length" 
+                       class="md-raised md-primary"
+                       ng-click="PlayerCtrl.ForeingSrv.finishCreation()"
+                       > Inizia avventura </md-button>
+        </md-container>   
     </div>
+
    
-    <input  ng-hide="PlayerCtrl.PlayerSrv.getPlayers().length ==3" type="submit" ng-click="PlayerCtrl.savePlayer(PlayerCtrl.player)" value="ADD Player" ng-disabled="form.$invalid" />
-    <input ng-show="PlayerCtrl.PlayerSrv.getPlayers().length" type="submit" value="Inizia avventura" />
+   
+    <!--<input  ng-hide="PlayerCtrl.PlayerSrv.getPlayers().length ==3" type="submit" ng-click="PlayerCtrl.savePlayer(PlayerCtrl.player)" value="ADD Player" ng-disabled="form.$invalid" />-->
+    <!--<input ng-show="PlayerCtrl.PlayerSrv.getPlayers().length" type="submit" value="Inizia avventura" />-->
 
 </form>
