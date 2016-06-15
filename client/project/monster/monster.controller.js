@@ -1,4 +1,4 @@
-angular.module('artoo').controller('MonsterCtrl', ($scope, MonsterSrv) =>{
+angular.module('artoo').controller('MonsterCtrl', (MonsterSrv) =>{
  
-  $scope.MonsterSrv = MonsterSrv;
+ this.MonsterSrv = MonsterSrv;
 });

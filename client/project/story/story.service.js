@@ -1,8 +1,7 @@
 angular.module('artoo').service('StorySrv', function (){
-    
-    //CREO UN AVVENTURA COMPOSTA DA 4 EVENTI 
+   //CREO UN AVVENTURA COMPOSTA DA 4 EVENTI 
     //IL 3° STEP
-    var stepAvventura = [{
+    var StepAdventure = [{
             typology : "combat",
             description: "Tutto ebbe inizio nella regione del Banland, nell'antica, anzi antichissima " +
                          "città di Therin, fondata precisamente 2 giorni fa. Dopo aver affrontato le intemperie " +
@@ -58,4 +57,12 @@ angular.module('artoo').service('StorySrv', function (){
         }
     ];
     
-});
+    this.getStepAdventure = () => {
+        return StepAdventure;
+    } 
+    
+    this.getCurrentStep = (typology) => {
+        console.log(StepAdventure.find(singleStep => (singleStep.typology === typology && singleStep.done === 0)));
+        // StepAdventure.find(singleStep => (singleStep.typology === typology && singleStep.done === 0))
+    }
+})

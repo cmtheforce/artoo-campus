@@ -1,4 +1,4 @@
-angular.module('artoo').service('PlayerSrv', function(RoleSrv){
+angular.module('artoo').service('PlayerSrv', function(RoleSrv, StorySrv){
     
   var idMax= 0;
   
@@ -63,9 +63,10 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv){
     
   };
   
-  
+  // FUNZIONE PER VEDERE SE ESISTE GIA' IL NOME DEL PERSONAGGIO CREATO
   this.checkName = (name) => { //Trova nome se esiste return true
-   return players.find(singlePlayer => singlePlayer.name === name);
+    var check=players.find(singlePlayer => singlePlayer.name === name);
+     return (check==undefined) ? false : true;
   };
   
   
@@ -86,5 +87,13 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv){
     player.hp=0;  
   };
   
-   
+  this.barProgression=(min, max)=>{
+     return (min/max)*100;
+  };
+    
+  // this.finishCreation = () => {
+  //   var story = StorySrv.getStepAdventure();
+  //  
+  //   story[0].typology === 'combat' ? $state.go(storyCombat) : $state.go(storyEvent);
+  // };
 });

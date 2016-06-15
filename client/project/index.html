@@ -14,47 +14,48 @@
   <body ng-app="artoo">
     <div layout="column" layout-fill>
       <!-- BARRA SUPERIORE LISTA PERSONAGGI-->
-        <player-bar></player-bar>
-        <nd-content flex> 
-          <!--BLOCCO CREAZIONE PERSONAGGIO-->
-          <player></player>
-          <!--ng-show ="PlayerCtrl.PlayerSrv.checkVisibilityCreation"></player>-->
-          <story></story>
-          <!--ng-show="!(StoryCtrl.PlayerSrv.checkVisibilityCreation)"></story>-->
-        </nd-content >
-        <footer>
-          <action-bar></action-bar> 
-        </footer>
+      <player-bar></player-bar>
+      <md-content flex> 
+        <!--BLOCCO CREAZIONE PERSONAGGIO-->
+            
+        <!--<div style="align-items: center; display:flex; flex-direction: column; height: 100vh; justify-content: center;">-->
+        <!--  <button ui-sref="createCharacter" style="border: 2px dashed #dedede; color: #dedede; padding: 50px;">START</button>-->
+        <!--</div>-->
+        
+        <div ui-view></div>
+    
+      </md-content >
+      <footer>
+        <action-bar></action-bar> 
+      </footer>
     </div>
 
- 
- 
-    <script src="node_modules/angular/angular.min.js"></script>
-    <script src="ui/appbar/appbar.js"></script>
-    <script src="project/app.js"></script>
-    <script src="project/appbars/playerbar.component.js"></script>
-    <script src="project/appbars/actionbar.component.js"></script>
-     <!--Include Angular Material-->
+    <!--Include Angular Material-->
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-aria/angular-aria.min.js"></script>
     <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="node_modules/angular-messages/angular-messages.min.js"></script>
     <script src="node_modules/angular-material/angular-material.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="project/app.js"></script>
+  
+    <script src="project/appbars/playerbar.component.js"></script>
+    <script src="project/appbars/actionbar.component.js"></script>
     
-    <script src="project/foreing/foreing.service.js"></script>
-     
     <script src="project/monster/monster.controller.js"></script>
     <script src="project/monster/monster.service.js"></script>
     
     <script src="project/player/player.controller.js"></script>
     <script src="project/player/player.service.js"></script>
-    <script src="project/player/player.component.js"></script>
     <script src="project/player/player.filter.js"></script>
     <script src="project/player/role.service.js"></script>
     
+    <script src="project/story/story-combat/story-combat.service.js"></script>
+    <script src="project/story/story-combat/story-combat.controller.js"></script>
+    <script src="project/story/story-event/story-event.controller.js"></script>
+    <script src="project/story/story-event/story-event.service.js"></script>
+    
     <script src="project/story/story.service.js"></script>
-    <script src="project/story/story.component.js"></script>
-    <script src="project/story/story.controller.js"></script>
     
 
     

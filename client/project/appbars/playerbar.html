@@ -10,11 +10,11 @@
         <!--<div>HP: {{player.hp}} / {{player.hpMax}}</div>-->
         <div layout="column">
           <div flex> HP: {{player.hp}} / {{player.hpMax}}</div>
-          <md-progress-linear class="hp" md-mode="determinate" value="100"></md-progress-linear>
+          <md-progress-linear class="hp" md-mode="determinate" value="PlayerSrv.barProgression(player.hp,player.layer.hpMax)"></md-progress-linear>
         </div>
         <div layout="column">
           <div flex> Mana: {{player.mana}} / {{player.manaMax}}</div>
-          <md-progress-linear class="mana" md-mode="determinate" value="player.manaPerc"></md-progress-linear>
+          <md-progress-linear class="mana" md-mode="determinate" value="PlayerSrv.barProgression(player.mana,player.manaMax)"></md-progress-linear>
         </div>
         <!--<div>Money: {{player.gold | gold}}</div>-->
       </div>
