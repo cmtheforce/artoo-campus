@@ -12,6 +12,7 @@ angular.module('artoo').service('StorySrv', function (){
                          "un gruppo di bannati (così viene chiamata la gente della regione) decisamente ubriachi che " + 
                          "con uno sguardo a dir tanto enigmatico sfoderano i propri boccali e si preparano a lanciarli verso di voi",
             ability: "",
+            abilityUsed: false,
             done : 0,
         },{
             typology : "event",
@@ -25,6 +26,7 @@ angular.module('artoo').service('StorySrv', function (){
                          "E voi che cosa volete? Non vedete come mi hanno ridotto la mia locanda? Ho aperto da 2 giorni" + 
                          "e già devo chiudere.",
             ability: "",
+            abilityUsed: false,
             done : 0,
         },{
             typology : "event",
@@ -38,11 +40,20 @@ angular.module('artoo').service('StorySrv', function (){
                          "ingegneri esiste sempre una backdoor in cucina e quindi decidete di fare il giro e ritrovate il ladruncolo con " + 
                          "in tasca i vostri soldi ed in mano un paio di coltelli decisamente affilati.",
             ability: "Forza",
+            abilityUsed: false,
             done : 0, 
         },{
             typology : "combat",
+            description: "Riuscite con estrema facilità a circondare il piccolo ladruncolo ma improvvisamente dall'ingresso posteriore della cucina " +
+                         "",
+            ability: "",
+            abilityUsed: false,
+            done : 0,  
+        },{
+            typology : "event",
             description: "",
             ability: "",
+            abilityUsed: false,
             done : 0,  
         }
     ];

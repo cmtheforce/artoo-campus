@@ -8,7 +8,7 @@ angular.module('artoo').service('RoleSrv', function() {
             name: "Arciere senza freccia",
             abilita: "Agilita",
             hpLv: 80,
-            manaLv: 80,
+            manaLv: 60,
             attackLv: 60,
         },
         {

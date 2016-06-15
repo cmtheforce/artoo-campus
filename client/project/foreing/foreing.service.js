@@ -5,4 +5,8 @@ angular.module('artoo').service('ForeingSrv', function(){
     this.finishCreation = () => {
         this.checkVisibilityCreation = false;
     };
+    
+    this.barProgression=(min, max)=>{
+     return (min/max)*100;
+    }
 });
