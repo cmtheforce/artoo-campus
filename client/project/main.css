@@ -5,3 +5,8 @@ md-progress-linear.hp .md-container .md-bar{
  md-progress-linear.mana .md-container .md-bar{
   background-color: #4d4dff;   
 }
+
+md-card.selected{
+     border-style: solid;
+     border-color: rgb(75, 167, 120);
+}

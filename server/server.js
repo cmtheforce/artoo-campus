@@ -48,11 +48,12 @@ app.use('/', express.static(path.join(__dirname, '..', 'client')));
 // URL and params
 
 // middlewares: create a timeRequest middleware and an ip filter middleware
-
+app.use(require('./exercises/middlewares/timeRequest.js'));
 // routers + controllers
 
 // define here your API
-// app.use('/api/items', require('./exercises/items').router);
+app.use('/api/items', require('./exercises/middlewares/timeRequest.js'), require('./exercises/middlewares/mean.js'), require('./exercises/items').router);
+app.use('/api/users', require('./exercises/users').router);
 
 // handle not-found resources
 app.get('/:url(api|node_modules|public)/*', (req, res) => {

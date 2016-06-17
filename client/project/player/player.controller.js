@@ -2,10 +2,13 @@ angular.module('artoo').controller('PlayerCtrl', function ($mdDialog,PlayerSrv, 
    this.PlayerSrv = PlayerSrv;
    this.RoleSrv = RoleSrv;
   
+  
     //IMPOSTO IL SESSO A MASCHIO SE NON VIENE INSERITO
-    this.player = {sex : 'm', role : 0};
-    
- 
+    this.player = {sex : 'm', role : -1};
+    this.errorMex=""; //'
+    this.setIdRole=(code)=>{
+      this.player.role=code;
+    }
     
     
      this.showAlert = function(ev) {
@@ -17,8 +20,8 @@ angular.module('artoo').controller('PlayerCtrl', function ($mdDialog,PlayerSrv, 
         .parent(angular.element(document.querySelector('#popupContainer')))
         .clickOutsideToClose(true)
         .title('Errore')
-        .textContent('Nome già in uso!')
-        .ariaLabel('Errore: Nome già in uso!')
+        .textContent(this.errorMex)
+        .ariaLabel('Errore: '+this.errorMex)
         .ok('Chiudi')
         .targetEvent(ev)
     );
@@ -26,9 +29,27 @@ angular.module('artoo').controller('PlayerCtrl', function ($mdDialog,PlayerSrv, 
     
     
     this.savePlayer = (params) =>{
-      if(!this.PlayerSrv.checkName(params.name)){
+      
+      this.errorMex = "";
+      
+      //VEDO SE IL NOME E' GIA' IN USO
+      if(this.PlayerSrv.checkName(params.name)){
+        this.errorMex += 'Nome già in uso!';
+      }
+      //VEDO SE NON E' STATO INSERITO UN RUOLO
+      if(params.role==-1){
+        this.errorMex += 'Seleziona una Classe!' + '';
+      }
+      if(this.errorMex !== ""){
+        this.showAlert();
+        return;
+      }
+      else{
         this.PlayerSrv.addPlayer(params);
-      }else this.showAlert();
+        this.player.role=-1;
+      }
+
+
     };
     
 });

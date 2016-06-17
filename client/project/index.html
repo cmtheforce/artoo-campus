@@ -18,11 +18,12 @@
       <md-content flex> 
         <!--BLOCCO CREAZIONE PERSONAGGIO-->
             
-        <!--<div style="align-items: center; display:flex; flex-direction: column; height: 100vh; justify-content: center;">-->
-        <!--  <button ui-sref="createCharacter" style="border: 2px dashed #dedede; color: #dedede; padding: 50px;">START</button>-->
-        <!--</div>-->
-        
+        <div ng-hide="hideBtn" style="align-items: center; display:flex; flex-direction: column; height: 100vh; justify-content: center;">
+          <button  ng-click="hideBtn=true" ui-sref="createCharacter" style="border: 2px dashed #dedede; color: red; padding: 50px;">START</button>
+        </div>
+        {{PlayerCtrl.hideBtn}}
         <div ui-view></div>
+            
     
       </md-content >
       <footer>

@@ -34,7 +34,8 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv, StorySrv){
     
     //Funzione che mi ritorna le statistiche in base al livello del PG 
     var role=RoleSrv.getRole(player.role, 1);
- 
+     player.image=role["image"];
+     
     //Incremento id per aggiunta nuovi Player  
     player.id=idMax++;
     
@@ -53,9 +54,9 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv, StorySrv){
     player.att=role["attackLv"] || 0;
     player.dif=0;
     player.gold= 0;
-    player.image="http://www.placehold.it/70x70";
+   
     if(player.name =='Berlusca'){ player.gold=1000000000; 
-      player.image = 'project/bandana.jpg';
+      player.image = 'http://www.promessepubbliche.com/images/content/berlusconi-silvio/berlusconi-bandana_min.jpg';
     }
     player.level= 1;
     

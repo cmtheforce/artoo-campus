@@ -17,16 +17,42 @@
       <md-radio-button value="m">Maschio</md-radio-button>
       <md-radio-button value="f"> Femmina </md-radio-button>
     </md-radio-group>
-    <div layout="column" layout-margin>
-        <label class="md-display-1" layout-margin> Ruolo: </label> 
-        <md-input-container  >
-             <md-select ng-model="PlayerCtrl.player.role" required>
+    
+     <div layout="row" layout-padding layout-margin>
+        <div ng-repeat=" role in PlayerCtrl.RoleSrv.get()">
+          <md-card ng-click="PlayerCtrl.setIdRole(role.id)" 
+                   ng-class="{'selected': PlayerCtrl.player.role==role.id}" flex>
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">{{role.name}}</span>
+                <span class="md-title">Abilità: {{role.abilita}}</span>
+                <span class="md-title">HP per Livello: {{role.hpLv}}</span>
+                <span class="md-title">Mana per Livello: {{role.manaLv}}</span>
+              </md-card-title-text>
+              
+              <md-card-title-media>
+                <!--<div class="md-media-sm card-media">-->
+                <img  ng-src="{{role.image}}"></img>
+                <!--</div>-->
+              </md-card-title-media>
+              
+            </md-card-title>
+            
+            
+            <div class="md-subhead" layout-margin>{{role.description}}</div>
+          </md-card>
+        </div>
+   </div> 
+    <!--<div layout="column" layout-margin>-->
+    <!--    <label class="md-display-1" layout-margin> Ruolo: </label> -->
+    <!--    <md-input-container  >-->
+    <!--         <md-select ng-model="PlayerCtrl.player.role" required>-->
                  <!-- PER FAR PASSARE UN INT DALLA SELECT OCCORRE UTILIZZARE ng-value-->
-              <md-option ng-repeat=" role in PlayerCtrl.RoleSrv.get()" ng-value="role.id">
-                  {{role.name}}
-              </md-option>
-        </md-input-container>
-    </div>
+    <!--          <md-option ng-repeat=" role in PlayerCtrl.RoleSrv.get()" ng-value="role.id">-->
+    <!--              {{role.name}}-->
+    <!--          </md-option>-->
+    <!--    </md-input-container>-->
+    <!--</div>-->
 
     <div layout="row">
         <md-container>    

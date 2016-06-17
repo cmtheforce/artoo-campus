@@ -43,8 +43,8 @@ angular.module('artoo').service('StorySrv', function (){
             done : 0, 
         },{
             typology : "combat",
-            description: "Riuscite con estrema facilità a circondare il piccolo ladruncolo ma improvvisamente dall'ingresso posteriore della cucina " +
-                         "",
+            description: "Riuscite con estrema facilità a circondare il piccolo ladruncolo che spaventato a morte dalla vostra presenza " +
+                         "ma soprattutto dal profumo maleodorante di birra ",
             ability: "",
             abilityUsed: false,
             done : 0,  
