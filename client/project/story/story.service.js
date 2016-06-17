@@ -4,7 +4,7 @@ angular.module('artoo').service('StorySrv', function (){
     var StepAdventure = [{
             typology : "combat",
             description: "Tutto ebbe inizio nella regione del Banland, nell'antica, anzi antichissima " +
-                         "città di Therin, fondata precisamente 2 giorni fa. Dopo aver affrontato le intemperie " +
+                         "città di Ethernit, fondata precisamente 2 giorni fa. Dopo aver affrontato le intemperie " +
                          "da ormai una settimana, riuscite finalmente a scorgere in lontananza il centro cittadino. " +
                          "Sentite in lontananza un gran baccano e intuite (non occorrere essere dei maghi per una volta!) " +
                          "che i festeggiamenti non sono mai stati interrotti, tanto che davanti a voi si presenta " +
@@ -43,15 +43,26 @@ angular.module('artoo').service('StorySrv', function (){
             done : 0, 
         },{
             typology : "combat",
-            description: "Riuscite con estrema facilità a circondare il piccolo ladruncolo che spaventato a morte dalla vostra presenza " +
-                         "ma soprattutto dal profumo maleodorante di birra ",
+            description: "Riuscite con estrema facilità ad accerchiare il piccolo ladruncolo il quale si ritrova alle strette e si guarda intorno " + 
+                         "in cerca di una via di fuga. Sembra non avere scampo ma da una delle sue tasche tira fuori una specie di sfera " +
+                         "e la getta improvvisamente a terra creando in pochi secondi una nebbia che avvolge completamente tutta la cucina " +
+                         "impedendo la visione, anche a distanza ravvicinata. Non riuscite a capire dove sia andato il ladro finchè non sentite " +
+                         "sbattere una porta, capite subito che si tratta dell'uscita posteriore ed il più in fretta possibile uscite dalla cucina. " + 
+                         "Vedete sorprendentemente il ladruncolo davanti a voi ma questa volta è accompagnato da due grossi umanoidi che sfoderano " + 
+                         "le spade e si preparano allo scontro.",
             ability: "",
             abilityUsed: false,
             done : 0,  
         },{
             typology : "event",
-            description: "",
-            ability: "",
+            description: "La parola sconfitta non fa parte del vostro repertorio, almeno per oggi, ed uscite vincitori dal combattimento. Sfrugando tra " +
+                         "le tasche del defunto ladro recuperate la borsa dei soldi e notate una lettera ancora chiusa che riporta il sigillo di un drago " +
+                         "circondato da sfere che fluttuano intorno alla creatura. [Intelligenza] Non riuscite immediatamente a riconoscere il simbolo " +
+                         "del timbro ma improvvisamente il mago si rende conto che si tratta della congrega di Khelaris, veneratori dell'omonimo drago, " +
+                         "che secondo la leggenda venne imprigionato in un luogo sconosciuto a molti, anche al gruppo. [/Intelligenza]" + 
+                         "Siete sul punto di aprire la lettera quando vedete avvicinarsi un uomo sulla quartina che vi sussurra: 'Seguitemi giovani avventurieri, " +
+                         "Non è il posto adatto per parlare'",
+            ability: "Intelligenza",
             abilityUsed: false,
             done : 0,  
         }

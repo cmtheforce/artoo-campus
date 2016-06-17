@@ -1,6 +1,26 @@
 <form name="form" ng-submit="" novalidate autocomplete="off">
     <div layout="column" layout-margin>
-        <label class="md-display-2"> Creazione del personaggio </label>
+        
+        <div layout="row">
+            <label   class="md-display-2"> Creazione del personaggio </label>
+            
+            <div flex></div>
+                <div layout="row" layout-align="space-around center" >
+                    <md-container>    
+                        <md-button ng-hide="PlayerCtrl.PlayerSrv.getPlayers().length ==3" 
+                                   class="md-raised md-primary"
+                                   ng-click="PlayerCtrl.savePlayer(PlayerCtrl.player)"
+                                   ng-disabled="form.$invalid"> Conferma personaggio </md-button>
+                                   
+                        <md-button ng-show="PlayerCtrl.PlayerSrv.getPlayers().length" 
+                                   class="md-raised md-primary"
+                                   ng-click="PlayerCtrl.finishCreation()"
+                                   > Inizia avventura </md-button>
+                    </md-container>   
+                </div>
+                
+        </div>
+        
         
         <md-input-container>
           <label>Nome:</label>
@@ -9,8 +29,9 @@
               <div ng-message="required" class="my-message">You must enter an username</div>
               <div ng-message="md-maxlength" class="my-message"> You must enter a 15 characters</div>
           </div>
-        </md-input-container>
-        
+ 
+     </md-input-container>
+    
         <label class="md-display-1"> Sesso: </label> 
     </div> 
      <md-radio-group ng-model="PlayerCtrl.player.sex" layout="row" layout-margin>
@@ -54,19 +75,6 @@
     <!--    </md-input-container>-->
     <!--</div>-->
 
-    <div layout="row">
-        <md-container>    
-            <md-button ng-hide="PlayerCtrl.PlayerSrv.getPlayers().length ==3" 
-                       class="md-raised md-primary"
-                       ng-click="PlayerCtrl.savePlayer(PlayerCtrl.player)"
-                       ng-disabled="form.$invalid"> Conferma personaggio </md-button>
-                       
-            <md-button ng-show="PlayerCtrl.PlayerSrv.getPlayers().length" 
-                       class="md-raised md-primary"
-                       ng-click="PlayerCtrl.PlayerSrv.finishCreation()"
-                       > Inizia avventura </md-button>
-        </md-container>   
-    </div>
 
    
    

@@ -10,7 +10,7 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv, StorySrv){
 //     id: 0,
 //     name : "player1",
 //     sesso: "M",
-//     classe: "Guerriero", // Idclasse 
+//     classe: idRole, // Idclasse 
 //     level: 1,
 //     exp: 0,
 //     //--Statistiche
@@ -83,6 +83,11 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv, StorySrv){
     });
   };
   
+  //PRENDO L'INVENTARIO DI UN GIOCATORE
+  this.getInventoryById = (idPlayer) => {
+    
+  }
+  
   
   this.killPlayer = (player) => {
     player.hp=0;  
@@ -91,10 +96,4 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv, StorySrv){
   this.barProgression=(min, max)=>{
      return (min/max)*100;
   };
-    
-  // this.finishCreation = () => {
-  //   var story = StorySrv.getStepAdventure();
-  //  
-  //   story[0].typology === 'combat' ? $state.go(storyCombat) : $state.go(storyEvent);
-  // };
 });
