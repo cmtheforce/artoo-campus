@@ -1,5 +1,6 @@
-<md-toolbar class="md-tall md-accent" layout="row" layout-align="space-around center">
-  <div ng-repeat="player in PlayerCtrl.PlayerSrv.getPlayers()" flex>
+<md-toolbar class="md-tall md-accent" layout="row" layout-align="space-around center" 
+            ng-hide="PlayerBarCtrl.$state.is('start')">
+  <div ng-repeat="player in PlayerBarCtrl.PlayerSrv.getPlayers()" flex>
    <div layout="row" layout-padding>
     <div layout-align="center center" layout="column" >
      <img src="{{player.image}}"/>

@@ -1,8 +1,55 @@
 <!--<form ng-show="!StoryCtrl.ForeingSrv.checkVisibilityCreation">-->
     <!--<input type="submit" ng-click="" value="Prosegui" />-->
+    <!--<player-bar></player-bar>-->
     
-    <div name="combat" layout="row" layout-margin>
-        <md-button class="md-accent md-raised" flex ng-click="doNormalAttack()" value="Normal Attack">Normal Attack</md-button> 
+    <div ng-controller="StoryCombatCtrl" layout="column" ng-cloak  flex-offset="15" flex="70" style="padding-top: 2%;">
+        <md-toolbar class="md-warn" flex >
+            <div class="md-toolbar-tools" >
+                <h2 class="md-flex" style="text-align: center; color: white;"> Schermata combattimento </h2>
+            </div>
+        </md-toolbar>
+        <md-content layout-padding style="text-align: center; border-radius: 0.5px; box-shadow: 2px 3px 4px 1px rgba(0,0,0,0.3);" flex>
+            <p> {{StoryCombatCtrl.StorySrv.getStepAdventure()[0].description}} </p>
+        </md-content>
+        
+        <!-- sezione info mostro -->
+        <br>
+        <md-content class="md-padding" layout-xs="column" layout="row">
+            <div flex-xs flex-gt-xs="50" layout="column">
+                <md-card>
+                    <img ng-src="http://vignette2.wikia.nocookie.net/quiz-rpg-the-world-of-mystic-wiz/images/b/b7/Mostro_Sin_(Zombie_Iron_Chef)_Icon.png/revision/latest?cb=20141025160404" class="md-card-image" style="width: 410px; height: 100px;" alt="Washed Out">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline"> 1 BOSS </span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                      <p>
+                        The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                        two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                      </p>
+                      <p>
+                        The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                        two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                      </p>
+                      <p>
+                        The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                        two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                      </p>
+                </md-card-content>
+            </div>
+        </md-content>
+        
+        <!-- tasti combattimento -->
+        <br>
+        <section layout="row" layout-sm="column" layout-align="center center" flex="100" layout-wrap>
+            <md-button ng-hide="StoryCombatCtrl.StoryCombatSrv.enableCombat" ng-click="StoryCombatCtrl.StoryCombatSrv.startCombat()" class="md-raised md-primary" flex="20"> Combatti </md-button>
+            <md-button ng-disabled="true" class="md-raised md-primary" flex-offset="5" flex="20"> Avanti </md-button>
+        </section>
+    </div>
+
+    <div name="combat" layout="row" layout-margin ng-show="StoryCombatCtrl.StoryCombatSrv.enableCombat">
+        <md-button class="md-primary md-raised" flex ng-click="doNormalAttack()" value="Normal Attack">Normal Attack</md-button> 
         <md-button class="md-primary md-raised" flex ng-click="doSpecialAttack()" value="Special Attack">Special Attack</md-button> 
         <md-button class="md-primary md-raised" flex ng-click="useHealthPotion()" value="Use Health Potion">Use Health Potion</md-button> 
         <md-button class="md-primary md-raised" flex ng-click="useManaPotion()" value="Use Mana Potion">Use Mana Potion</md-button> 

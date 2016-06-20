@@ -1,5 +1,5 @@
 const main = angular.module('main', [
-  'appbar',
+  'appbar', 
 ])
   .run(($rootScope) => {
     $rootScope.subjects = [{

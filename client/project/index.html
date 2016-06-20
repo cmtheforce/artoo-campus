@@ -1,71 +1,103 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <base href="/">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
-    <title>Artoo Campus - Project</title>
-    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
-    <link rel="stylesheet" href="project/main.css">
-    <!--<link rel="stylesheet" href="ui/appbar/appbar.css">-->
-    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic"> <!--Roboto Font -->
-    <!--<link rel="stylesheet" href="ui/form/form.css">-->
-  </head>
-  
-  <body ng-app="artoo">
-    <div layout="column" layout-fill>
-      <!-- BARRA SUPERIORE LISTA PERSONAGGI-->
-      <player-bar ng-show="hideBtn"></player-bar>
-      
-      
-      <md-content flex> 
-        <div flex ng-hide="hideBtn" layout="column" layout-margin layout-align="center center" class="md-display-4"> Really Powerful Game </div>
-        <div ng-hide="hideBtn" style="align-items: center; display:flex; flex-direction: column; height: 70vh; justify-content: center;">
-          <button  ng-click="hideBtn=true" ui-sref="createCharacter" style="border: 2px dashed #dedede; color: red; padding: 50px;">START</button>
-        </div>
-        {{PlayerCtrl.hideBtn}}
-      <!--BLOCCO CAMBIO PAGINA-->
-        <div ui-view></div>
-        
-      </md-content >
-      
-      
-      <footer>
-        <action-bar></action-bar> 
-      </footer>
-    </div>
 
-    <!--Include Angular Material-->
-    <script src="node_modules/angular/angular.min.js"></script>
-    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
-    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
-    <script src="node_modules/angular-messages/angular-messages.min.js"></script>
-    <script src="node_modules/angular-material/angular-material.min.js"></script>
-    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="project/app.js"></script>
-  
-    <script src="project/appbars/playerbar.component.js"></script>
-    <script src="project/appbars/actionbar.component.js"></script>
-    
-    <script src="project/item/inventory.service.js"></script>
-    <script src="project/item/item.service.js"></script>
-    
-    <script src="project/monster/monster.controller.js"></script>
-    <script src="project/monster/monster.service.js"></script>
-    
-    <script src="project/player/player.controller.js"></script>
-    <script src="project/player/player.service.js"></script>
-    <script src="project/player/player.filter.js"></script>
-    <script src="project/player/role.service.js"></script>
-    
-    <script src="project/story/story-combat/story-combat.service.js"></script>
-    <script src="project/story/story-combat/story-combat.controller.js"></script>
-    <script src="project/story/story-event/story-event.controller.js"></script>
-    <script src="project/story/story-event/story-event.service.js"></script>
-    
-    <script src="project/story/story.service.js"></script>
-    
+<head>
+  <base href="/">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width">
+  <title>Artoo Campus - Project</title>
+  <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+  <link rel="stylesheet" href="project/main.css">
 
-    
-  </body>
+</head>
+
+<body ng-app="artoo">
+  <div layout="column" layout-fill>
+    <!-- BARRA SUPERIORE LISTA PERSONAGGI-->
+    <!-- LA CONDIZIONE DI VISIBILITA' SI TROVA DENTRO HTML-->
+    <player-bar></player-bar>
+    <inventory></inventory>
+    <div ui-view></div>
+
+    <!--<md-content flex> -->
+    <!--  <div flex ng-hide="hideBtn" layout="column" layout-margin layout-align="center center" class="md-display-4"> Really Powerful Game </div>-->
+    <!--  <div ng-hide="hideBtn" style="align-items: center; display:flex; flex-direction: column; height: 70vh; justify-content: center;">-->
+    <!--    <button  ng-click="hideBtn=true" ui-sref="createCharacter" style="border: 2px dashed #dedede; color: red; padding: 50px;">START</button>-->
+    <!--<button  ng-click="hideBtn=true" ui-sref="createCharacter" ng-click="PlayerCtrl.loadPlayers()" style="border: 2px dashed #dedede; color: red; padding: 50px;">Continua</button>-->
+    <!--  </div>-->
+    <!--BLOCCO CAMBIO PAGINA-->
+    <!--  <div ui-view></div>-->
+
+    <!--</md-content >-->
+
+
+    <!-- <div flex></div>-->
+    <!--    </md-content>-->
+    <!--    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">-->
+    <!--      <md-toolbar class="md-theme-light">-->
+    <!--        <h1 class="md-toolbar-tools">Sidenav Right</h1>-->
+    <!--      </md-toolbar>-->
+    <!--      <md-content ng-controller="InventoryCtrl" layout-padding>-->
+    <!--      <md-content  layout-padding>-->
+    <!--        <form>-->
+    <!--          <md-input-container>-->
+    <!--            <label for="testInput">Test input</label>-->
+    <!--            <input type="text" id="testInput"-->
+    <!--                   ng-model="data" md-autofocus>-->
+    <!--          </md-input-container>-->
+    <!--        </form>-->
+    <!--        <md-button ng-click="close()" class="md-primary">-->
+    <!--          Close Sidenav Right-->
+    <!--        </md-button>-->
+    <!--      </md-content>-->
+    <!--    </md-sidenav>-->
+    <!--  </section>-->
+    <!--</div>-->
+
+
+
+
+
+  </div>
+
+  <!--Include Angular Material-->
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/angular-resource/angular-resource.min.js"></script>
+  <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+  <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+  <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+  <script src="node_modules/angular-material/angular-material.min.js"></script>
+  <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="project/app.js"></script>
+
+  <script src="project/intro/intro.controller.js"></script>
+
+  <script src="project/inventory/inventory.component.js"></script>
+  <script src="project/inventory/inventory.controller.js"></script>
+  <script src="project/inventory/inventory.service.js"></script>
+
+  <script src="project/items/items.service.js"></script>
+
+  <script src="project/monster/monster.controller.js"></script>
+  <script src="project/monster/monster.service.js"></script>
+
+  <script src="project/appbars/playerbar.component.js"></script>
+  <script src="project/appbars/playerbar.controller.js"></script>
+
+  <script src="project/player/player.controller.js"></script>
+  <script src="project/player/player.service.js"></script>
+  <script src="project/player/player.filter.js"></script>
+  <script src="project/player/role.service.js"></script>
+
+  <script src="project/story/story-combat/story-combat.service.js"></script>
+  <script src="project/story/story-combat/story-combat.controller.js"></script>
+  <script src="project/story/story-event/story-event.controller.js"></script>
+  <script src="project/story/story-event/story-event.service.js"></script>
+
+  <script src="project/story/story.service.js"></script>
+
+
+
+</body>
+
 </html>

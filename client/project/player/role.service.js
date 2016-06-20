@@ -2,6 +2,49 @@ angular.module('artoo').service('RoleSrv', function() {
     
     var role = {};
     
+    var inventoryStart=[
+         {
+           slotMax: 20,
+            items : [{
+                id: 10,
+                quantity: 1
+            },{
+                id: 0,
+                quantity: 1
+            },{
+                id: 1,
+                quantity : 1
+            }]
+         },{
+            slotMax: 20,
+            items : [{
+                id: 4,
+                quantity: 1
+            },{
+                id: 8,
+                quantity: 1
+            },{
+                id: 0,
+                quantity: 1
+            },{
+                id: 1,
+                quantity: 1
+            }],
+         },{
+            slotMax: 20,
+            items: [{
+                id: 2,
+                quantity: 1
+            },{
+                id: 0,
+                quantity: 1
+            },{
+                id: 1,
+                quantity: 1
+            }]
+        }
+    ];
+    
     //LISTA DEI RUOLI DI UN GIOCATORE
     var roles = [{
             id: 0,
@@ -37,6 +80,9 @@ angular.module('artoo').service('RoleSrv', function() {
     
     //-----Public API------
       
+    
+    
+      
     this.get = () =>{
         return roles;
     };
@@ -55,6 +101,9 @@ angular.module('artoo').service('RoleSrv', function() {
                 
         //Calcolo l'attacco del player in base al livello
         statRole.attackLv = statRole.attackLv * levelPlayer;
+        idRolePlayer=parseInt(idRolePlayer);
+       
+        statRole.inventory=inventoryStart[idRolePlayer]; 
         
         return statRole;
     };

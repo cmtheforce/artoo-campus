@@ -7,8 +7,12 @@ const path = require('path');
 const development = (process.env.NODE_ENV === 'production') ? false : true;
 const settings = require('./settings');
 
-// const mongoose = require('mongoose');
-// mongoose.Promise = require('bluebird');
+const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+mongoose.connect(settings.mongoUrlRaffo, (err) => {
+  if (err) throw new Error(err);
+  console.info('Connection to the database was successfull.');
+});
 // mongoose.connect(settings.mongoUrl, (err) => {
 //   if (err) throw new Error(err);
 //   console.info('Connection to the database was successfull.');
@@ -41,6 +45,7 @@ app.use('/public', express.static(path.join(__dirname, '..', 'public')));
 app.use('/node_modules', express.static(path.join(__dirname, '..', 'node_modules')));
 app.use('/', express.static(path.join(__dirname, '..', 'client')));
 
+
 // call sayHello here
 
 // play with response
@@ -48,12 +53,15 @@ app.use('/', express.static(path.join(__dirname, '..', 'client')));
 // URL and params
 
 // middlewares: create a timeRequest middleware and an ip filter middleware
-app.use(require('./exercises/middlewares/timeRequest.js'));
+// app.use(require('./exercises/middlewares/timeRequest.js'));
 // routers + controllers
 
 // define here your API
-app.use('/api/items', require('./exercises/middlewares/timeRequest.js'), require('./exercises/middlewares/mean.js'), require('./exercises/items').router);
+// app.use('/api/items', require('./exercises/middlewares/timeRequest.js'), require('./exercises/middlewares/mean.js'), require('./exercises/items').router);
 app.use('/api/users', require('./exercises/users').router);
+app.use('/api/items', require('./project/items').router);
+app.use('/api/players', require('./project/players').router);
+
 
 // handle not-found resources
 app.get('/:url(api|node_modules|public)/*', (req, res) => {

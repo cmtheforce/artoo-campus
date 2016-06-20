@@ -4,7 +4,8 @@ angular.module('artoo', [
   'ngAnimate',
   'ngMaterial',
   'ui.router',
-])
+  'ngResource',
+  ])
   .config(($mdThemingProvider) => {
     $mdThemingProvider.theme('default')
         .primaryPalette('blue-grey')
@@ -15,6 +16,12 @@ angular.module('artoo', [
   })
   .config(($stateProvider, $urlRouterProvider) => {
     $stateProvider
+      .state('start', {
+        templateUrl: 'project/intro/intro.html',
+        controller: 'IntroCtrl',
+        controllerAs: 'IntroCtrl',
+        url: '/',
+      })
       .state('createCharacter', {
         templateUrl : 'project/player/player.html',
         controller : 'PlayerCtrl',
@@ -23,15 +30,14 @@ angular.module('artoo', [
       })   
       
       .state('storyEvent',{
-        templateUrl: 'project/story-event/story-event.html',
+        templateUrl: 'project/story/story-event/story-event.html',
         controller: 'StoryEventCtrl',
         controllerAs: 'StoryEventCtrl',
         url: '/event',
-        
       })
     
       .state('storyCombat',{
-        templateUrl: 'project/story-combat/story-combat.html',
+        templateUrl: 'project/story/story-combat/story-combat.html',
         controller: 'StoryCombatCtrl',
         controllerAs: 'StoryCombatCtrl',
         url: '/combat',

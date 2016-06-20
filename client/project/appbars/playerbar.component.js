@@ -1,6 +1,6 @@
 angular.module('artoo').component('playerBar', {
 
-     controller : 'PlayerCtrl',
-     controllerAs : 'PlayerCtrl',
-    templateUrl : 'project/appbars/playerbar.html',
+     controller : 'PlayerBarCtrl',
+     controllerAs : 'PlayerBarCtrl',
+     templateUrl : 'project/appbars/playerbar.html',
 });

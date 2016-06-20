@@ -1,4 +1,4 @@
-angular.module('artoo').service('PlayerSrv', function(RoleSrv, StorySrv){
+angular.module('artoo').service('PlayerSrv', function(RoleSrv,InventorySrv, StorySrv, $resource){
     
   var idMax= 0;
   
@@ -6,38 +6,33 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv, StorySrv){
 
   var role = {};
   
-//   var player=[ {
-//     id: 0,
-//     name : "player1",
-//     sesso: "M",
-//     classe: idRole, // Idclasse 
-//     level: 1,
-//     exp: 0,
-//     //--Statistiche
-//     hp: 10,
-//     hpMax:10,
-//     mana:6,
-//     manaMax:6,
-//     att: 2,
-//     dif: 3,
-//     gold: 0,
-//   }]
+  var Player = $resource('/api/players', {},{});
+  
+  console.log(Player)
 
+
+//PUBLIC API (server)
+  this.query = () => {
+    Players.query().$promise
+    .then((data) => {
+      players.push(data);//Load Player
+      console.log(data.get());
+    });
+ };
+    
  
-  //-----Public API------
-   
+  //-----Public API-----
+
   this.addPlayer = (params) => {
- 
-   
     var player = angular.copy(params);
     params= {};
     
     //Funzione che mi ritorna le statistiche in base al livello del PG 
     var role=RoleSrv.getRole(player.role, 1);
      player.image=role["image"];
-     
-    //Incremento id per aggiunta nuovi Player  
-    player.id=idMax++;
+     player.inventory=role["inventory"]
+     //Incremento id per aggiunta nuovi Player  
+     player.id=idMax++;
     
     //Setto le propietà che non posso settare nel form  
     var hpMax=role["hpLv"] || "NaN";
@@ -50,7 +45,6 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv, StorySrv){
     player.hp=hpMax;
     player.mana=manaMax;
     
- 
     player.att=role["attackLv"] || 0;
     player.dif=0;
     player.gold= 0;
@@ -59,8 +53,10 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv, StorySrv){
       player.image = 'http://www.promessepubbliche.com/images/content/berlusconi-silvio/berlusconi-bandana_min.jpg';
     }
     player.level= 1;
-    
+  console.log(player);
     players.push(player);
+    
+    
     
   };
   
@@ -97,3 +93,22 @@ angular.module('artoo').service('PlayerSrv', function(RoleSrv, StorySrv){
      return (min/max)*100;
   };
 });
+
+  // var Players = $resource('/api/players', {},{});
+  
+//   var player=[ {
+//     id: 0,
+//     name : "player1",
+//     sesso: "M",
+//     role: idRole, // Idclasse 
+//     level: 1,
+//     exp: 0,
+//     //--Statistiche
+//     hp: 10,
+//     hpMax:10,
+//     mana:6,
+//     manaMax:6,
+//     att: 2,
+//     dif: 3,
+//     gold: 0,
+//   }]

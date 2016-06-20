@@ -1,8 +1,15 @@
-// angular.module('artoo').controller('PlayerCtrl', function ($mdDialog,PlayerSrv, RoleSrv) {
-angular.module('artoo').controller('PlayerCtrl', function ($mdToast,PlayerSrv, RoleSrv, StorySrv, $state) {
+angular.module('artoo').controller('PlayerCtrl', function ($mdToast,PlayerSrv, RoleSrv, StorySrv, InventorySrv,ItemsSrv, $state) {
    this.PlayerSrv = PlayerSrv;
    this.RoleSrv = RoleSrv;
+   this.ItemsSrv= ItemsSrv;
   
+  
+  //TEST del continua
+  this.loadPlayers=()=>{
+    // PlayerSrv.query();  
+  }
+  
+
   
     //IMPOSTO IL SESSO A MASCHIO SE NON VIENE INSERITO
     this.player = {sex : 'm', role : -1};
@@ -25,27 +32,8 @@ angular.module('artoo').controller('PlayerCtrl', function ($mdToast,PlayerSrv, R
       //  });			   
       };
     
-    
-  //   this.showAlert = function(ev) {
-  //   // Appending dialog to document.body to cover sidenav in docs app
-  //   // Modal dialogs should fully cover application
-  //   // to prevent interaction outside of dialog
-  //   $mdDialog.show(
-  //     $mdDialog.alert()
-  //       .parent(angular.element(document.querySelector('#popupContainer')))
-  //       .clickOutsideToClose(true)
-  //       .title('Errore')
-  //       .textContent(this.errorMex)
-  //       .ariaLabel('Errore: '+this.errorMex)
-  //       .ok('Chiudi')
-  //       .targetEvent(ev)
-  //   );
-  // };
-    
-    
     this.savePlayer = (params) =>{
-      
-       var errorMessage = "";
+      var errorMessage = "";
       
       //VEDO SE IL NOME E' GIA' IN USO
       if(this.PlayerSrv.checkName(params.name)){
@@ -62,6 +50,8 @@ angular.module('artoo').controller('PlayerCtrl', function ($mdToast,PlayerSrv, R
       }
       else{
         this.PlayerSrv.addPlayer(params);
+        //DEVO DECOMMENTARE QUESTO PER CREARE L'INVENTARIO
+     //   this.InventorySrv.createInventory(params);
         this.player.role=-1;
       }
     };

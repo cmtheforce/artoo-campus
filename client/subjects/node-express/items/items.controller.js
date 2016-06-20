@@ -7,7 +7,6 @@ angular.module('artoo').controller('ItemsCtrl', function ($scope, ItemsSrv){
     newItem.name = "Shuriken";
     //FACCIO UNA POST
     newItem.$save().then((items) =>{
-        console.log(items);
     }).catch((err) => {
         console.error(err);
     });
