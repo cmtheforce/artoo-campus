@@ -2,9 +2,10 @@ var mongoose= require("mongoose");
 var Schema= mongoose.Schema;
 
 var playerSchema= new Schema ({
+    idPlayer: Number,
     name : String,
     sex: String,
-    role: String,
+    role: Number,
     level: Number,
     exp: Number,
     hp: Number,
@@ -14,8 +15,7 @@ var playerSchema= new Schema ({
     att: Number,
     dif: Number,
     gold: Number,
-    // inventory: Object,
-    createdAt: Date,
+    inventory: Object,
 });
 
 var Player = mongoose.model('Player', playerSchema);

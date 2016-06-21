@@ -1,3 +1,2 @@
-angular.module('artoo').controller('IntroCtrl', function(PlayerSrv){
-    this.PlayerSrv = PlayerSrv;
+angular.module('artoo').controller('IntroCtrl', function(){
 });

@@ -1,46 +1,25 @@
 module.exports = function () {
   
-  // var players = require('./players').slice();
-  
   var Player= require("./players.model");
   
-  function create(req, res) {
+  //FUNZIONE PER LA CREAZIONE DI UN PLAYER
+  function create(req, res){
+    
+    //CONTROLLO SE IL NOME E' COMPRESO TRA 3 E 15 CARATTERI 
+    req.checkParams('name').notEmpty().isLength({min:3, max:15});
+    //CONTROLLO CHE IL RUOLO INSERITO SIA TRA QUELLI PREVISTI
+    req.checkParams('role').isIn(['Guerriero Impazzito','Arciere senza freccia','Mago Somago']);
+    if(req.validationErrors()){
+      return res.status(400).send('Bad request');
+    }
+    req.body.createdAt = new Date();
+      
     Player.create(req.body)
-      .then(()=>{res.status(201).send("Player Creato con successo")})
-      .catch(err=> res.status(500).send("Errore nella creazione del player!"));
-     var newPlayer = new Player (req.body);
-     newPlayer.save(() =>{
-      res.status(201).send("Player Creato con successo");
-    }).catch (err => res.status(500).send("Errore nella creazione del player!"))
+      .then(data => res.status(201).json(data))
+      .catch(err => res.status(500).json(err));
   }
-  
-  function query(req, res) {
-   Player.find().exec()
-   .then(player => res.status(200).json(player))
-   .catch (err => res.status(500).send ("Errore nella lettura dei Players: "+ err))
-  }
-  
- function update(req,res){
-   Player.findByIdAndUpdate(req.params.id, req.body)
-   .then(data=> res.status(202).send("Player Aggiornato con successo!"))
-   .catch (err => res.status(500).send ("Errore nel Update del Player: "+ err))
- }
- 
-  function truncate(req, res) {
-    Player.remove()
-    // .then(data => Player.create(require('./data/players')))
-    .then(data => res.status(201).send("Drop Avvenuto con successo!"))
-    .catch(err => res.status(500).send(err));
-  }
-  
-
-  
   // public API
   return {
-    create: create,
-    query: query,
-    update: update,
-    // remove: remove,
-    truncate: truncate,
+    create : create,
   };
 };

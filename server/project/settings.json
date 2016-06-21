@@ -1,0 +1,3 @@
+{
+    "mongoUrl" : "mongodb://app:password@ds047945.mlab.com:47945/artoo-db",
+}

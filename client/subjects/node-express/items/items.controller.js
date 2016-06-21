@@ -1,6 +1,7 @@
 angular.module('artoo').controller('ItemsCtrl', function ($scope, ItemsSrv){
     
     ItemsSrv.query().then((items) => {
+        
     });
     
     var newItem = ItemsSrv.create();

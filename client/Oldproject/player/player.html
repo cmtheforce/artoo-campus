@@ -1,0 +1,84 @@
+<form name="form" ng-submit="" novalidate autocomplete="off">
+    <div layout="column" layout-margin>
+        
+        <div layout="row">
+            <label   class="md-display-2"> Creazione del personaggio </label>
+            
+            <div flex></div>
+                <div layout="row" layout-align="space-around center" >
+                    <md-container>    
+                        <md-button ng-hide="PlayerCtrl.PlayerSrv.getPlayers().length ==3" 
+                                   class="md-raised md-primary"
+                                   ng-click="PlayerCtrl.savePlayer(PlayerCtrl.player)"
+                                   ng-disabled="form.$invalid"> Conferma personaggio </md-button>
+                                   
+                        <md-button ng-show="PlayerCtrl.PlayerSrv.getPlayers().length" 
+                                   class="md-raised md-primary"
+                                   ng-click="PlayerCtrl.finishCreation()"
+                                   > Inizia avventura </md-button>
+                    </md-container>   
+                </div>
+                
+        </div>
+        
+        
+        <md-input-container>
+          <label>Nome:</label>
+          <input md-maxlength="15" name="name" type="text" ng-model="PlayerCtrl.player.name" required>
+          <div ng-messages="form.name.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">You must enter an username</div>
+              <div ng-message="md-maxlength" class="my-message"> You must enter a 15 characters</div>
+          </div>
+ 
+     </md-input-container>
+    
+        <label class="md-display-1"> Sesso: </label> 
+    </div> 
+     <md-radio-group ng-model="PlayerCtrl.player.sex" layout="row" layout-margin>
+      <md-radio-button value="m">Maschio</md-radio-button>
+      <md-radio-button value="f"> Femmina </md-radio-button>
+    </md-radio-group>
+    
+     <div layout="row" layout-padding layout-margin>
+        <div ng-repeat=" role in PlayerCtrl.RoleSrv.get()">
+          <md-card ng-click="PlayerCtrl.setIdRole(role.id)" 
+                   ng-class="{'selected': PlayerCtrl.player.role==role.id}" flex>
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">{{role.name}}</span>
+                <span class="md-title">Abilità: {{role.abilita}}</span>
+                <span class="md-title">HP per Livello: {{role.hpLv}}</span>
+                <span class="md-title">Mana per Livello: {{role.manaLv}}</span>
+              </md-card-title-text>
+              
+              <md-card-title-media>
+                <!--<div class="md-media-sm card-media">-->
+                <img  ng-src="{{role.image}}"></img>
+                <!--</div>-->
+              </md-card-title-media>
+              
+            </md-card-title>
+            
+            
+            <div class="md-subhead" layout-margin>{{role.description}}</div>
+          </md-card>
+        </div>
+   </div> 
+    <!--<div layout="column" layout-margin>-->
+    <!--    <label class="md-display-1" layout-margin> Ruolo: </label> -->
+    <!--    <md-input-container  >-->
+    <!--         <md-select ng-model="PlayerCtrl.player.role" required>-->
+                 <!-- PER FAR PASSARE UN INT DALLA SELECT OCCORRE UTILIZZARE ng-value-->
+    <!--          <md-option ng-repeat=" role in PlayerCtrl.RoleSrv.get()" ng-value="role.id">-->
+    <!--              {{role.name}}-->
+    <!--          </md-option>-->
+    <!--    </md-input-container>-->
+    <!--</div>-->
+
+
+   
+   
+    <!--<input  ng-hide="PlayerCtrl.PlayerSrv.getPlayers().length ==3" type="submit" ng-click="PlayerCtrl.savePlayer(PlayerCtrl.player)" value="ADD Player" ng-disabled="form.$invalid" />-->
+    <!--<input ng-show="PlayerCtrl.PlayerSrv.getPlayers().length" type="submit" value="Inizia avventura" />-->
+
+</form>

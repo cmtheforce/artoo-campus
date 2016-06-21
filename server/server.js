@@ -7,16 +7,18 @@ const path = require('path');
 const development = (process.env.NODE_ENV === 'production') ? false : true;
 const settings = require('./settings');
 
+
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect(settings.mongoUrlRaffo, (err) => {
+mongoose.connect(settings.mongoUrl, (err) => {
+//mongoose.connect(settings.mongoUrlRaffo, (err) => {
   if (err) throw new Error(err);
   console.info('Connection to the database was successfull.');
 });
-// mongoose.connect(settings.mongoUrl, (err) => {
-//   if (err) throw new Error(err);
-//   console.info('Connection to the database was successfull.');
-// });
+
+//RICHIAMO EXPRESS-VALIDATOR
+const expressValidator = require('express-validator');
+
 
 // setup server
 const app = express();
@@ -33,6 +35,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 // setup the body parser to accept json and populate req.body
 app.use(bodyParser.json());
+
+//INVOCO L'UTILIZZO DEL MIDDLEWARE
+app.use(expressValidator());
 
 // use HTTP verbs such as PUT or DELETE where the client doesn't support others
 app.use(methodOverride());
@@ -57,9 +62,13 @@ app.use('/', express.static(path.join(__dirname, '..', 'client')));
 // routers + controllers
 
 // define here your API
-// app.use('/api/items', require('./exercises/middlewares/timeRequest.js'), require('./exercises/middlewares/mean.js'), require('./exercises/items').router);
-app.use('/api/users', require('./exercises/users').router);
-app.use('/api/items', require('./project/items').router);
+//app.use('/api/items', require('./exercises/middlewares/timeRequest.js'), require('./exercises/middlewares/mean.js'), require('./exercises/items').router);
+// app.use('/api/items',require('./exercises/items').router);
+// app.use('/api/users', require('./exercises/users').router);
+// app.use('/api/items', require('./project/items').router);
+
+
+app.use('/api/roles', require('./project/roles').router);
 app.use('/api/players', require('./project/players').router);
 
 

@@ -3,7 +3,7 @@ const controller = require('./items.controller.js')();
 const router = express.Router();
 
 //AGGIUNGO I METODI AL ROUTER
-router.get('/', controller.query);
+router.get('/', controller.get);
 router.post('/', controller.save);
 
 module.exports = {
