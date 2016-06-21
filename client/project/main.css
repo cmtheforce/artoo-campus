@@ -10,3 +10,63 @@ md-card.selected{
      border-style: solid;
      border-color: rgb(75, 167, 120);
 }
+
+@-webkit-keyframes sfondohome {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+	}
+@keyframes sfondohome {
+   from { background-position: 0 0; }
+   to { background-position: 100% 0;}
+   }
+
+@-webkit-keyframes personaggiohome {
+	from { background-position: 0 50%; }
+	to { background-position: 15% 0%; }
+	}
+@keyframes personaggiohome {
+   from { background-position: 0 50%; }
+   to { background-position: 15% 0%;}
+   }
+
+.sfondo	{ 
+	width: 100%; 
+	height: 100%; 
+	background-image: url(../public/image/sfondo.jpg);
+	-webkit-animation: sfondohome 8s alternate-reverse linear infinite; /* Safari and Chrome */
+    animation: sfondohome 8s alternate-reverse linear infinite;
+    animation-iteration-count: infinite;
+    background-size: cover;
+}
+
+.guerriero{
+    width: 100%; 
+	height: 100%;
+    background-image: url(../public/image/guerriero1.png);
+    animation: personaggiohome 12s alternate-reverse linear infinite;
+    background-repeat: no-repeat;
+}
+
+.mago{
+    width: 100%; 
+	height: 100%;
+    background-image: url(../public/image/mago.png);
+    animation: personaggiohome 12s alternate-reverse linear infinite;
+    background-repeat: no-repeat;
+}
+
+.arciere{
+    width: 100%; 
+	height: 100%;
+    background-image: url(../public/image/arciere.png);
+    animation: personaggiohome 12s alternate-reverse linear infinite;
+    background-repeat: no-repeat;
+}
+
+.ombra{
+    text-shadow: 2px 4px 2px #000;
+}
+
+.ombra1{
+    text-shadow: 1px 1px 1px #ddd;
+}

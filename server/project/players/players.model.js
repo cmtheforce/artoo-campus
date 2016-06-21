@@ -14,6 +14,7 @@ var playerSchema= new Schema ({
     att: Number,
     dif: Number,
     gold: Number,
+    image: String,
     // inventory: Object,
     createdAt: Date,
 });

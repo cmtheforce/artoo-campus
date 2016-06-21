@@ -27,7 +27,6 @@ module.exports = function () {
     function create(req, res){
         
         Role.find().exec().then((data) => {
-             
             if(data.length === 3){
                 res.status(406).send('Roles already exist');
             }

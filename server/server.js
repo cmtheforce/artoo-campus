@@ -70,6 +70,7 @@ app.use('/', express.static(path.join(__dirname, '..', 'client')));
 
 app.use('/api/roles', require('./project/roles').router);
 app.use('/api/players', require('./project/players').router);
+app.use('/api/story', require('./project/story').router);
 
 
 // handle not-found resources

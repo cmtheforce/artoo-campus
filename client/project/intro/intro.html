@@ -1,6 +1,19 @@
-<md-content flex> 
-    <div flex layout="column" layout-margin layout-align="center center" class="md-display-4"> Really Powerful Game </div>
-    <div style="align-items: center; display:flex; flex-direction: column; height: 70vh; justify-content: center;">
-        <button ui-sref="createCharacter" style="border: 2px dashed #dedede; color: red; padding: 50px;">START</button>
-    </div>
-</md-content >
+<md-content flex class="sfondo" style="background-size: cover;"> 
+    <div flex layout="column" layout-margin layout-align="center center" class="md-display-4" style="font-family: 'VT323'; color:white;"> <span class="ombra"> Really Powerful Game </span> </div>
+   
+   <div layout="rown" flex style="height: 90vh;">
+       <div layout="column" flex layout-padding layout-margin>
+           <div layout="rown" flex flex-offset="15" layout-align="center" style="margin-top: 3%;">       
+               <span class="md-display-3 ombra1" ui-sref="createCharacter" ng-click="IntroCtrl.resetPlayers()" style="cursor:pointer; height: 10vh; padding: 2%; font-family: 'VT323';">NEW GAME</span>
+           </div>
+           <div layout="rown" flex layout-align="center">
+               <span class="md-display-3 ombra1" style="cursor:pointer; height: 10vh; font-family: 'VT323';">CONTINUE</span>
+           </div>
+           <div layout="rown" flex>
+               <div  layout="column" flex class="guerriero" style="height: 20vh;"></div>
+               <div  layout="column" flex class="mago" style="height: 20vh;"></div>
+               <div  layout="column" flex class="arciere" style="height: 20vh;"></div>
+           </div>
+       </div>
+   </div>
+</md-content>
