@@ -13,6 +13,6 @@ angular.module('artoo').service('RoleSrv', function ($resource) {
     };
     
     this.query = () => {
-        return Role.query().$promise;  
+        return Role.query().$promise;
     };
 });

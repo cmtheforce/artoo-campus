@@ -40,9 +40,10 @@
     </md-radio-group>
     
      <div layout="row" layout-padding layout-margin>
-        <div ng-repeat=" role in PlayerCtrl.RoleSrv.get()">
-          <md-card ng-click="PlayerCtrl.setIdRole(role.id)" 
-                   ng-class="{'selected': PlayerCtrl.player.role==role.id}" flex>
+        <div ng-repeat=" role in PlayerCtrl.roles">
+          <md-card ng-click="PlayerCtrl.player.role=role['_id']" 
+                   ng-class="{'selected': PlayerCtrl.player.role==role['_id']}" flex>
+            
             <md-card-title>
               <md-card-title-text>
                 <span class="md-headline">{{role.name}}</span>
@@ -52,9 +53,7 @@
               </md-card-title-text>
               
               <md-card-title-media>
-                <!--<div class="md-media-sm card-media">-->
                 <img  ng-src="{{role.image}}"></img>
-                <!--</div>-->
               </md-card-title-media>
               
             </md-card-title>
@@ -64,21 +63,5 @@
           </md-card>
         </div>
    </div> 
-    <!--<div layout="column" layout-margin>-->
-    <!--    <label class="md-display-1" layout-margin> Ruolo: </label> -->
-    <!--    <md-input-container  >-->
-    <!--         <md-select ng-model="PlayerCtrl.player.role" required>-->
-                 <!-- PER FAR PASSARE UN INT DALLA SELECT OCCORRE UTILIZZARE ng-value-->
-    <!--          <md-option ng-repeat=" role in PlayerCtrl.RoleSrv.get()" ng-value="role.id">-->
-    <!--              {{role.name}}-->
-    <!--          </md-option>-->
-    <!--    </md-input-container>-->
-    <!--</div>-->
-
-
    
-   
-    <!--<input  ng-hide="PlayerCtrl.PlayerSrv.getPlayers().length ==3" type="submit" ng-click="PlayerCtrl.savePlayer(PlayerCtrl.player)" value="ADD Player" ng-disabled="form.$invalid" />-->
-    <!--<input ng-show="PlayerCtrl.PlayerSrv.getPlayers().length" type="submit" value="Inizia avventura" />-->
-
 </form>
