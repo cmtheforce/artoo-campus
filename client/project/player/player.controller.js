@@ -1,4 +1,4 @@
-angular.module('artoo').controller('PlayerCtrl', function ($mdToast, PlayerSrv, $state, RoleSrv , $resource) {
+angular.module('artoo').controller('PlayerCtrl', function (PlayerSrv, RoleSrv , $resource ,$scope) {
     this.PlayerSrv = PlayerSrv;
     this.RoleSrv=RoleSrv;
  
@@ -7,34 +7,18 @@ angular.module('artoo').controller('PlayerCtrl', function ($mdToast, PlayerSrv, 
     this.role ={};
     this.roles= {};
    
-    
-    this.showToast = function(text) {
-      var toast = $mdToast.simple()
-      .textContent(text)
-      .action('OK')
-      .position('top right')
-      .highlightAction(false);                     
-      $mdToast.show(toast);
-    };
-
     this.queryRole = () => {
         this.loading = true;
-        // console.log("Loading TRUE");
         RoleSrv.query().then((data) => {
-            //Eventuale variabile per il load
              this.roles=data;
              this.loading = false;
-            // console.log("Loading false");
         })
     };
     
-    
     //SINGLETON
     this.queryRole();
-    PlayerSrv.queryPlayers("",function (){PlayerSrv.getPlayers();})
-   
-    
-    
+    PlayerSrv.refresh();
+  
     this.savePlayer = (player) =>{
       var errorMessage = "";
        this.loading = true;
@@ -47,7 +31,7 @@ angular.module('artoo').controller('PlayerCtrl', function ($mdToast, PlayerSrv, 
         errorMessage += 'Seleziona una Classe!' + '';
       }
       if(errorMessage !== ""){
-        this.showToast(errorMessage)
+        PlayerSrv.showToast(errorMessage)
         this.loading = false;
         return;
       }
@@ -65,10 +49,13 @@ angular.module('artoo').controller('PlayerCtrl', function ($mdToast, PlayerSrv, 
               player.mana=details.manaLv;
               player.att=details.attackLv
               player.ability=details.ability
-              player.dif=0;
+              player.def=details.def;
               player.gold= 0;
               player.image= details.image;
               player.nameRole=details.name;
+              player.manaPotion = 2;
+              player.healthPotion = 2;
+              player.isAlive=1;
               delete player.role;
              
             PlayerSrv.create(player);

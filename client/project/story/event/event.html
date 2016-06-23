@@ -1,0 +1,19 @@
+<div ng-controller="StoryEventCtrl" layout="column" ng-cloak  flex-offset="15" flex="70" style="padding-top: 2%;">
+    <div flex > 
+        <md-toolbar>
+            <div class="md-toolbar-tools" >
+                   <h2 class="md-flex" style="text-align: center;"> Evento </h2>
+            </div>
+        </md-toolbar>
+
+        <md-content layout-padding style="text-align: center; border-radius: 0.5px; box-shadow: 2px 3px 4px 1px rgba(0,0,0,0.3);" flex>
+            <p> {{StoryEventCtrl.StorySrv.StepAdventure[0].description}} </p>
+        </md-content>
+        <br>
+        
+        <section layout="row" layout-sm="column" layout-align="center center" flex="100" layout-wrap>
+            <md-button class="md-raised md-primary" flex="20"> Evento </md-button>
+            <md-button ng-disabled="true" class="md-raised md-primary" flex-offset="5" flex="20"> Avanti </md-button>
+        </section>
+    </div>
+</div>

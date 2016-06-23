@@ -1,0 +1,14 @@
+@-webkit-keyframes creazione {
+	from { margin-left: 10%;}
+	to { margin-left: 0%;}
+	}
+@keyframes creazione {
+   from { margin-left: 10%;}
+   to { margin-left: 0%;}
+}
+
+.player{
+    
+    animation: creazione 6s alternate-reverse linear infinite;
+    background-repeat: no-repeat;
+}

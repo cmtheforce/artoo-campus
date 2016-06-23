@@ -1,5 +1,7 @@
 angular.module('artoo').service('StorySrv', function ($resource) {
     
+    this.story = {};
+    
     var Story = $resource('/api/story/:action', {},{
         getStoryStep: {
             method: 'GET',
@@ -15,9 +17,13 @@ angular.module('artoo').service('StorySrv', function ($resource) {
         }
     });
     
-//   this.getStoryStep = () => {
-//       return Story.getDetails().$promise;
-//   }
-
+    this.getCurrentStep = () => {
+        return Story.getCurrentStep().$promise;
+    }
+    
+    this.getStoryStep = (id) => {
+        return Story.getStoryStep({id : id}).$promise;
+    }
+    
     
 })

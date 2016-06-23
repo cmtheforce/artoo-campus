@@ -23,7 +23,7 @@ module.exports = function () {
     }
     
     function findCurrent(req, res){
-        Story.findOne({done: 0}).exec()
+        Story.findOne({done: false}).exec()
         .then((data) => {
             res.status(200).json(data);
         })

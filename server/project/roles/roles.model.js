@@ -7,7 +7,9 @@ var roleSchema = new Schema({
     hpLv: Number,
     manaLv: Number,
     attackLv: Number,
+    def: Number,
     image: String,
+    icon: String,
     description: String,
 });
 

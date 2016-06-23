@@ -27,7 +27,19 @@ angular.module('artoo', [
         controller : 'PlayerCtrl',
         controllerAs : 'PlayerCtrl',
         url: '/createCharacter',
-      })   
+      })
+      .state('storyEvent', {
+        templateUrl : 'project/story/event/event.html',
+        controller : 'EventCtrl',
+        controllerAs : 'EventCtrl',
+        url : '/event',
+      })
+      .state('storyCombat', {
+        templateUrl : 'project/story/combat/combat.html',
+        controller : 'CombatCtrl',
+        controllerAs : 'CombatCtrl',
+        url : '/combat',
+      })
       
       $urlRouterProvider.otherwise('/');
   });

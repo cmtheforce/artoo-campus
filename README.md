@@ -47,20 +47,17 @@ ReallyPowerfulGame
 
 ### Stories
 
+* As a user, I can start a new adventure.
 * As a user, I can choose the number of players.
 * As a user, I can choose a class for each player.
 * As a user, I can use an item in player's inventory.
-    * Weapon: increase attack power and determinate type of attack.
-    * Armor: increase resistance of damage.
-    * Consumable: restore or change player's stats.
-* As a user, I can change my inventory.
+    * Consumable: restore or change player's stats..
 * As a user, I can start an adventure divided into chapters.
     * Each chapters are composed by events.
 * As a user, I can run into an event (monster or special situation).
 * As a user, I can inflict damage to a monster.
 * As a user, I can receive damage from a monster.
-* As a user, I can receive a reward from an event.
-* As a user, I can solve special events according to a class.
+
 
 
 

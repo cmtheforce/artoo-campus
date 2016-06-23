@@ -2,7 +2,10 @@ var mongoose= require("mongoose");
 var Schema= mongoose.Schema;
 
 var playerSchema= new Schema ({
-    name : String,
+    name : {
+        type: String,
+        unique: true,
+    },
     sex: String,
     role: String,
     level: Number,
@@ -12,10 +15,13 @@ var playerSchema= new Schema ({
     mana: Number,
     manaMax:Number,
     att: Number,
-    dif: Number,
+    def: Number,
     gold: Number,
+    isAlive : Number,
     image: String,
     // inventory: Object,
+    manaPotion : Number,
+    healthPotion : Number,
     createdAt: Date,
 });
 

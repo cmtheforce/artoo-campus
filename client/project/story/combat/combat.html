@@ -1,0 +1,86 @@
+<div ng-controller="CombatCtrl" ng-cloak>
+    <div layout="row" flex layout-padding layout-margin>
+        
+        <!-- azioni player -->
+        <div layout="column" flex>
+            <div ng-show="CombatCtrl.getTurn()>=0 && CombatCtrl.CombatSrv.getEnableCombat()">
+                <span class="md-headline"> Turno di : <span style="color: green;"> {{CombatCtrl.PlayerSrv.players[CombatCtrl.getTurn()].name}} </span> </span>
+             <div class="finale" ng-repeat="logs in CombatCtrl.logCombat()">
+                 <div layout="column" flex> 
+                         <ul>
+                             <li class="md-subhead" style="padding: 1%;"> {{logs}} </li>   
+                         </ul> 
+                 </div>
+             </div>
+            </div>
+        </div>
+        
+        <!-- sezione versus -->
+        <div ng-show="CombatCtrl.getTurn()>=0 && CombatCtrl.CombatSrv.getEnableCombat()" layout="column" layout-align="center none" flex>
+            <img style="height: 150px; width:150px; margin-left:15%;" ng-src="../public/image/versus.png">
+        </div>
+        
+        
+        <!-- sezione mostro-->
+        <div layout="column" layout-align="center none" flex>
+            <div ng-show="CombatCtrl.getTurn()==-1 && CombatCtrl.CombatSrv.getEnableCombat()"  class="md-display-1">
+                Turno del Mostro
+            </div>
+            
+            <div>
+                <md-card ng-show="CombatCtrl.CombatSrv.getEnableCombat()" >
+                    <img ng-src="{{CombatCtrl.CombatSrv.getMonster().image}}" class="md-card-image" style="width: 200px; height: 150px; padding:4%; margin-left:15%;" alt="Washed Out">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline"> {{CombatCtrl.CombatSrv.getMonster().name}} </span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content style="background: blue; opacity: 0.6; color: white; padding: 2%;">
+                      
+                    <div> HP:
+                      <md-progress-linear class="hp" md-mode="determinate" value="{{CombatCtrl.barProgression(CombatCtrl.CombatSrv.getMonster().hp,CombatCtrl.CombatSrv.getMonster().hpMax)}}"></md-progress-linear>
+                    </div>
+                    <div> Mana:
+                      <md-progress-linear class="mana" md-mode="determinate" value="{{CombatCtrl.barProgression(CombatCtrl.CombatSrv.getMonster().mana,CombatCtrl.CombatSrv.getMonster().manaMax)}}"></md-progress-linear>
+                    </div>
+                    <p> {{CombatCtrl.CombatSrv.getMonster().description}} </p>
+                    
+                </md-card-content>
+            </div>
+        </div>
+    </div>
+
+
+    <div layout="column" flex layout-padding>
+        <div layout="row" flex layout-align="center">
+            <md-toolbar ng-hide="CombatCtrl.CombatSrv.getEnableCombat()" class="md-warn">
+                <div class="md-toolbar-tools">
+                    <h2 style="color: white;"> Schermata combattimento </h2>
+                </div>
+            </md-toolbar>
+        </div>
+         <div layout="row" flex>
+            <md-content ng-hide="CombatCtrl.CombatSrv.getEnableCombat()" layout-padding style="text-align: center; border-radius: 0.5px; box-shadow: 2px 3px 4px 1px rgba(0,0,0,0.3);">
+                <p> {{CombatCtrl.CombatSrv.getDescription()}} </p>
+            </md-content>
+        </div>
+    </div>
+        
+        
+        
+        <!-- tasti combattimento -->
+        <br>
+    <div layout="row" layout-margin layout-padding layout-align="center center">
+         <!--layout="row" layout-sm="column"-->
+            <md-button ng-hide="CombatCtrl.CombatSrv.getEnableCombat()" ng-click="CombatCtrl.CombatSrv.setEnableCombat()" class="md-raised md-primary"> Combatti </md-button>
+            <md-button ng-disabled="!(CombatCtrl.CombatSrv.getCombatDone())" ng-click="CombatCtrl.finish()" class="md-raised md-primary"> Avanti </md-button>
+    </div>
+    
+    <div layout="row" layout-margin layout-padding layout-align="center center">
+        <div name="combat" ng-show="CombatCtrl.CombatSrv.getEnableCombat() && !(CombatCtrl.getTurn()==-1) && !(CombatCtrl.CombatSrv.getCombatDone())">
+            <md-button class="md-primary md-raised" flex ng-click="CombatCtrl.attack('normal', CombatCtrl.PlayerSrv.players[CombatCtrl.getTurn()],CombatCtrl.CombatSrv.getMonster())" value="Normal Attack">Normal Attack</md-button> 
+            <md-button class="md-primary md-raised" flex ng-click="CombatCtrl.attack('special', CombatCtrl.PlayerSrv.players[CombatCtrl.getTurn()],CombatCtrl.CombatSrv.getMonster())" value="Special Attack" ng-disabled="CombatCtrl.PlayerSrv.players[CombatCtrl.getTurn()]['mana'] < 20">Special Attack</md-button> 
+            <md-button class="md-primary md-raised" flex ng-click="CombatCtrl.usePotion('health', CombatCtrl.PlayerSrv.players[CombatCtrl.getTurn()])" ng-disabled="CombatCtrl.PlayerSrv.players[CombatCtrl.getTurn()]['healthPotion'] == 0">Use Health Potion X {{CombatCtrl.PlayerSrv.players[CombatCtrl.getTurn()]['healthPotion']}} </md-button> 
+            <md-button class="md-primary md-raised" flex ng-click="CombatCtrl.usePotion('mana', CombatCtrl.PlayerSrv.players[CombatCtrl.getTurn()])" value="Use Mana Potion" ng-disabled="CombatCtrl.PlayerSrv.players[CombatCtrl.getTurn()]['manaPotion'] == 0">Use Mana Potion X {{CombatCtrl.PlayerSrv.players[CombatCtrl.getTurn()]['manaPotion']}}</md-button> 
+        </div>
+    </div>

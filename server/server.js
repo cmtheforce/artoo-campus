@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet')
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
@@ -45,6 +46,8 @@ app.use(methodOverride());
 // parse the cookie header and populate req.cookies
 app.use(cookieParser());
 
+app.use(helmet());
+
 // serve static files
 app.use('/public', express.static(path.join(__dirname, '..', 'public')));
 app.use('/node_modules', express.static(path.join(__dirname, '..', 'node_modules')));
@@ -67,7 +70,7 @@ app.use('/', express.static(path.join(__dirname, '..', 'client')));
 // app.use('/api/users', require('./exercises/users').router);
 // app.use('/api/items', require('./project/items').router);
 
-
+app.use('/api/monster', require('./project/monster').router);
 app.use('/api/roles', require('./project/roles').router);
 app.use('/api/players', require('./project/players').router);
 app.use('/api/story', require('./project/story').router);

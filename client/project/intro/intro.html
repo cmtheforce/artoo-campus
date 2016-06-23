@@ -1,19 +1,42 @@
-<md-content flex class="sfondo" style="background-size: cover;"> 
-    <div flex layout="column" layout-margin layout-align="center center" class="md-display-4" style="font-family: 'VT323'; color:white;"> <span class="ombra"> Really Powerful Game </span> </div>
+<md-content flex class="sfondo"> 
+
+    <!-- ost sottofondo -->
+    <audio ng-hide="audio=true" autoplay="true" controls="true" loop="true" preload=""> 
+		  <source src="../public/image/Final Fantasy VII - Boss Theme (8-Bit) (128kbit_Vorbis).ogg" type="audio/ogg"></source> 
+	</audio> 
+
+    <div ng-show="!IntroCtrl.credits()" flex layout="column" layout-margin layout-align="center center" class="md-display-4" style="font-family: 'VT323'; color:white;"> <span class="ombra"> Really Powerful Game </span> </div>
    
-   <div layout="rown" flex style="height: 90vh;">
+    <div layout="rown" flex style="height: 90vh;">
        <div layout="column" flex layout-padding layout-margin>
-           <div layout="rown" flex flex-offset="15" layout-align="center" style="margin-top: 3%;">       
-               <span class="md-display-3 ombra1" ui-sref="createCharacter" ng-click="IntroCtrl.resetPlayers()" style="cursor:pointer; height: 10vh; padding: 2%; font-family: 'VT323';">NEW GAME</span>
+           <div ng-show="!IntroCtrl.credits()" layout="rown" flex flex-offset="15" layout-align="center" style="margin-top: 3%;">       
+               <span class="md-display-3 ombra1" ui-sref="createCharacter" ng-click="IntroCtrl.resetPlayers()" style="cursor:pointer; height: 8vh; padding: 2%; font-family: 'VT323';">NEW GAME</span>
+           </div>
+           <div ng-show="!IntroCtrl.credits()" layout="rown" flex layout-align="center">
+               <span class="md-display-3 ombra1" ng-click="IntroCtrl.continue()" style="cursor:pointer; height: 10vh; font-family: 'VT323';">CONTINUE</span>
            </div>
            <div layout="rown" flex layout-align="center">
-               <span class="md-display-3 ombra1" style="cursor:pointer; height: 10vh; font-family: 'VT323';">CONTINUE</span>
+                <span ng-show="!IntroCtrl.credits()" ng-click="IntroCtrl.credits()" class="md-display-3 ombra1" style="cursor:pointer; height: 10vh; font-family: 'VT323';">CREDITS </span>
            </div>
-           <div layout="rown" flex>
-               <div  layout="column" flex class="guerriero" style="height: 20vh;"></div>
+           
+            <!-- crediti -->
+            <div ng-click="IntroCtrl.credits()" ng-show="IntroCtrl.credits()">
+                <div class="creatori md-display-3" layout="column" layout-margin layout-padding flex style="font-family: 'VT323'; padding: 2%;">
+                    <div layout="row" flex="100" layout-align="center stretch"> App creata da: </div>
+                    <div layout="row" flex="100" layout-align="center stretch"> Gabriele</div>
+                    <div layout="row" flex="100" layout-align="center stretch"> Raffaele </div>
+                    <div layout="row" flex="100" layout-align="center stretch"> Niki </div>
+                    <div layout="row" flex="100" layout-align="center stretch"> Con la presenza speciale di David Sorrentino </div>
+                </div>  
+            </div>
+           
+           <!-- anteprima classi selezionabili -->
+           <div  layout="rown" flex flex-offset="15" style="padding: 3%;">
+               <div  layout="column" flex flex-offset="15" class="guerriero" style="height: 20vh;"></div>
                <div  layout="column" flex class="mago" style="height: 20vh;"></div>
                <div  layout="column" flex class="arciere" style="height: 20vh;"></div>
            </div>
        </div>
-   </div>
+    </div>
+   
 </md-content>

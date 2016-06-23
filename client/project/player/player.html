@@ -1,68 +1,117 @@
 <form name="form" ng-submit="" novalidate autocomplete="off" ng-hide="loading">
-    <div layout="column" layout-margin>
-        
-        <div layout="row">
-            <label   class="md-display-2"> Creazione del personaggio </label>
-            <md-progress-circular layout-align="top center" md-diameter="70" ng-show="PlayerCtrl.loading" md-mode="indeterminate"></md-progress-circular>
-            <div flex></div>
-                <div layout="row" layout-align="space-around center" >
-                    <md-container>  
-                   
-                        <md-button ng-hide="PlayerCtrl.PlayerSrv.players.length ==3" 
-                                   class="md-raised md-primary"
-                                   ng-click="PlayerCtrl.savePlayer(PlayerCtrl.player)"
-                                   ng-disabled="form.$invalid || loading"> Conferma personaggio </md-button>
-                                   
-                        <md-button ng-show="PlayerCtrl.PlayerSrv.players.length" 
-                                   class="md-raised md-primary"
-                                   ng-click="PlayerCtrl.finishCreation()"
-                                   > Inizia avventura </md-button>
-                    </md-container>   
-                </div>
-                
-        </div>
-        
-        
-        <md-input-container>
-          <label>Nome:</label>
-          <input md-maxlength="15" name="name" type="text" ng-model="PlayerCtrl.player.name" required>
-          <div ng-messages="form.name.$error" role="alert" multiple>
-              <div ng-message="required" class="my-message">You must enter an username</div>
-              <div ng-message="md-maxlength" class="my-message"> You must enter a 15 characters</div>
-          </div>
- 
-     </md-input-container>
-    
-        <label class="md-display-1"> Sesso: </label> 
+    <div layout="row" flex="100" layout-align="center center" layout-padding layout-margin>
+        <label class="md-display-1" > Creazione del personaggio </label>    
     </div> 
-     <md-radio-group ng-model="PlayerCtrl.player.sex" layout="row" layout-margin>
-      <md-radio-button value="m">Maschio</md-radio-button>
-      <md-radio-button value="f"> Femmina </md-radio-button>
-    </md-radio-group>
-
-    <div layout="row" layout-padding layout-margin ng-hide="PlayerCtrl.loading">
+    
+    <!-- inserimento nome e sesso del personaggio -->
+    <div layout="row" flex layout-padding layout-margin>
+        <div layout="column" flex>
+            <div layout="column" flex>
+                <label class="md-headline"> Nome del personaggio: </label>
+                <md-input-container>
+                  <label> Inserisci... </label>
+                  <input md-maxlength="15" name="name" type="text" ng-model="PlayerCtrl.player.name" required>
+                  <div ng-messages="form.name.$error" role="alert" multiple>
+                      <div ng-message="required" class="my-message">You must enter an username</div>
+                      <div ng-message="md-maxlength" class="my-message"> You must enter a 15 characters</div>
+                  </div>
+                 </md-input-container>
+            </div>   
+        </div>
+        <div flex></div>
+        <div layout="column" flex>
+            <div layout="row" >
+                <label class="md-headline"> Sesso: </label> 
+            </div>
+            <div layout="column" >
+                <div layout="row" >
+                    <md-radio-group ng-model="PlayerCtrl.player.sex">
+                        <md-radio-button value="m"> Maschio </md-radio-button> 
+                        <md-radio-button value="f"> Femmina </md-radio-button> 
+                    </md-radio-group>
+                </div>
+            </div>
+        </div>
+    </div>   
+    
+    <!-- conferma creazione/cancellazione/reset personaggio -->
+    <div layout="row" flex layout-padding layout-margin>
+        <md-progress-circular layout-align="center center" md-diameter="70" ng-show="PlayerCtrl.loading" md-mode="indeterminate"></md-progress-circular>
+        <div flex>
+            <div layout="row" layout-align="space-around center" >
+                <md-container>  
+                <md-button ng-show="PlayerCtrl.PlayerSrv.players.length >0" 
+                    class="md-raised md-warn"
+                    ng-click="PlayerCtrl.PlayerSrv.remove()"
+                    ng-disabled="loading"> Annulla personaggi </md-button>
+                    
+                <md-button ng-show="PlayerCtrl.PlayerSrv.players.length" 
+                    class="md-raised md-primary"
+                    ng-click="PlayerCtrl.PlayerSrv.finishCreation($event)"
+                    > Inizia avventura </md-button>
+                   
+                <md-button ng-hide="PlayerCtrl.PlayerSrv.players.length ==3" 
+                    class="md-raised md-primary"
+                    ng-click="PlayerCtrl.savePlayer(PlayerCtrl.player)"
+                    ng-disabled="form.$invalid || loading"> Conferma personaggio </md-button>
+                                   
+                
+                </md-container>   
+            </div>
+                
+        </div>    
+    </div>
+        
+    <!-- blocco carte -->
+    <div layout="row" flex layout-padding layout-margin ng-hide="PlayerCtrl.loading">
+        <div layout="column" flex> 
         <div ng-repeat=" role in PlayerCtrl.roles">
           <md-card ng-click="PlayerCtrl.player.role=role['_id']" 
-                   ng-class="{'selected': PlayerCtrl.player.role==role['_id']}" flex>
-            
-            <md-card-title>
-              <md-card-title-text>
-                <span class="md-headline">{{role.name}}</span>
-                <span class="md-title">Abilità: {{role.abilita}}</span>
-                <span class="md-title">HP per Livello: {{role.hpLv}}</span>
-                <span class="md-title">Mana per Livello: {{role.manaLv}}</span>
-              </md-card-title-text>
+                   ng-class="{'selected': PlayerCtrl.player.role==role['_id']}" flex">
               
-              <md-card-title-media>
-                <img  ng-src="{{role.image}}"></img>
-              </md-card-title-media>
-              
-            </md-card-title>
-            
-            
-            <div class="md-subhead" layout-margin>{{role.description}}</div>
-          </md-card>
+                <div class="md-primary" layout="row" flex layout-padding layout-margin>   
+                
+                    <div layout="column" flex>
+                     
+                        <div layout="row" flex  layout-align=" start">
+                            <span class="md-title"> {{role.name}} </span>
+                        </div>
+                        <div layout="row" flex  layout-align="center center">
+                            <md-card-title-media>
+                                   <div> <img class="icone" ng-src="{{role.image}}"> </img> </div>
+                            </md-card-title-media>
+                        </div>
+                    </div>
+                    
+                    <div layout="column" flex layout-padding layout-margin>
+                        <div layout="column" flex>
+                            <label> 
+                                <div layout="row" flex="100" class="md-title"> Abilità: {{role.ability}}  </div>
+                            </label>
+                            <label> Hp: {{role.hpLv}}
+                                <div layout="row" flex="100" class="md-subhead"> <md-progress-linear  class="hp" value="{{role.hpLv}}"></md-progress-linear> </div>
+                            </label>
+                            <label> Mana: {{role.manaLv}}
+                                <div layout="row" flex="100"> <md-progress-linear  class="mana" value="{{role.manaLv}}"></md-progress-linear> </div>
+                            </label>
+                            <label> Attacco: {{role.attackLv}}
+                                <div layout="row" flex="100"> <md-progress-linear class="attacco" value="{{role.attackLv}}"></md-progress-linear> </div>
+                            </label>
+                            <label> Difesa: {{role.def}}
+                                <div layout="row" flex="100"> <md-progress-linear  class="difesa" value="{{role.def}}"></md-progress-linear> </div>
+                            </label>
+                       </div>
+                    </div>
+                    
+                </div> 
+                
+                <div style="background: blue; opacity: 0.5;">
+                    <div flex="100" layout-padding layout-margin >
+                        <div class="md-subhead md-accent" layout-margin style="opacity: 1; color: white;">{{role.description}}</div>
+                    </div>
+                </div>    
+            </md-card>    
         </div>
-   </div> 
-   
+        </div>
+    </div>
 </form>

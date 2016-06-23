@@ -7,10 +7,10 @@ module.exports = [{
                      "che i festeggiamenti non sono mai stati interrotti, tanto che davanti a voi si presenta " +
                      "un gruppo di bannati (così viene chiamata la gente della regione) decisamente ubriachi che " + 
                      "con uno sguardo a dir tanto enigmatico sfoderano i propri boccali e si preparano a lanciarli verso di voi",
-        monster: [],
+        monster: "Bannato",
         ability: "",
         abilityUsed: false,
-        done : 0,
+        done : false,
     },{
         typology : "event",
         description: "Il gruppo di bannati sembra non aver sentito alcun dolore per tutto il combattimento finchè non si rendono " +
@@ -22,10 +22,10 @@ module.exports = [{
                      "cinquantina decisamente disperato ma soprattutto infuriato per le condizioni del suo locale:" +
                      "E voi che cosa volete? Non vedete come mi hanno ridotto la mia locanda? Ho aperto da 2 giorni" + 
                      "e già devo chiudere.",
-        monster: [],
+        monster: "",
         ability: "",
         abilityUsed: false,
-        done : 0,
+        done : false,
     },{
         typology : "event",
         description: "Comprendete a pieno la disperazione del locandiere e decidete che è il caso di lasciarlo in pace, " +
@@ -37,10 +37,10 @@ module.exports = [{
                      "Purtroppo non siete in grado di sfondare una porta decisamente malandata e quindi secondo il manuale degli " +
                      "ingegneri esiste sempre una backdoor in cucina e quindi decidete di fare il giro e ritrovate il ladruncolo con " + 
                      "in tasca i vostri soldi ed in mano un paio di coltelli decisamente affilati.",
-        monster: [],
+        monster: "",
         ability: "Forza",
         abilityUsed: false,
-        done : 0, 
+        done : false, 
     },{
         typology : "combat",
         description: "Riuscite con estrema facilità ad accerchiare il piccolo ladruncolo il quale si ritrova alle strette e si guarda intorno " + 
@@ -50,10 +50,10 @@ module.exports = [{
                      "sbattere una porta, capite subito che si tratta dell'uscita posteriore ed il più in fretta possibile uscite dalla cucina. " + 
                      "Vedete sorprendentemente il ladruncolo davanti a voi ma questa volta è accompagnato da due grossi umanoidi che sfoderano " + 
                       "le spade e si preparano allo scontro.",
-        monster: [],
+        monster: "Ladro di Big Money",
         ability: "",
         abilityUsed: false,
-        done : 0,  
+        done : false,  
     },{
         typology : "event",
         description: "La parola sconfitta non fa parte del vostro repertorio, almeno per oggi, ed uscite vincitori dal combattimento. Sfrugando tra " +
@@ -63,9 +63,9 @@ module.exports = [{
                      "che secondo la leggenda venne imprigionato in un luogo sconosciuto a molti, anche al gruppo. [/Intelligenza]" + 
                      "Siete sul punto di aprire la lettera quando vedete avvicinarsi un uomo sulla quartina che vi sussurra: 'Seguitemi giovani avventurieri, " +
                      "Non è il posto adatto per parlare'",
-        monster: [],
+        monster: "",
         ability: "Intelligenza",
         abilityUsed: false,
-        done : 0,  
+        done : false,  
     }
 ];

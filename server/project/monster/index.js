@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('./players.controller')();
+const controller = require('./monster.controller')();
 
 router.post('/', controller.create);
-router.get('/find', controller.findPlayer);
-router.get('/', controller.query);
-router.delete('/', controller.truncate);
+router.get('/details', controller.details);
+router.get('/truncate', controller.truncate);
 router.post('/update', controller.update);
 
 module.exports = {
-  name: 'Players Router',
+  name: 'Monster Router',
   version: '1.1.0',
   router: router,
 };

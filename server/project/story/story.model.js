@@ -4,7 +4,7 @@ var Schema= mongoose.Schema;
 var storySchema = new Schema({
     typology: String,
     description : String,
-    monster: Array,
+    monster: String,
     ability: String,
     abilityUsed: Boolean,
     done: Boolean,

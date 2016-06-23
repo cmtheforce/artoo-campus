@@ -6,17 +6,25 @@ md-progress-linear.hp .md-container .md-bar{
   background-color: #4d4dff;   
 }
 
+ md-progress-linear.attacco .md-container .md-bar{
+  background-color: green;   
+}
+
+ md-progress-linear.difesa .md-container .md-bar{
+  background-color: black;   
+}
+
 md-card.selected{
      border-style: solid;
      border-color: rgb(75, 167, 120);
 }
 
 @-webkit-keyframes sfondohome {
-	from { background-position: 0 0; }
-	to { background-position: 100% 0; }
+	from { background-position: 0 0;}
+	to { background-position: 100% 0;}
 	}
 @keyframes sfondohome {
-   from { background-position: 0 0; }
+   from { background-position: 0 0;}
    to { background-position: 100% 0;}
    }
 
@@ -28,14 +36,51 @@ md-card.selected{
    from { background-position: 0 50%; }
    to { background-position: 15% 0%;}
    }
+ 
+@keyframes crediti {
+  from {
+    margin-top: -70%;
+  }
+
+  to {
+    margin-top: 30%;
+  }
+}
+
+@-webkit-keyframes crediti {
+	from { margin-top: -70%;}
+	to { margin-top: 30%;}
+}
+
+@keyframes movimento {
+  from {
+    margin-top: 0%;
+    margin-bottom: 0%;
+  }
+
+  to {
+    margin-top: 3%;
+    margin-bottom: 3%;
+  }
+}
 
 .sfondo	{ 
 	width: 100%; 
-	height: 100%; 
+	height: 100%;
 	background-image: url(../public/image/sfondo.jpg);
 	-webkit-animation: sfondohome 8s alternate-reverse linear infinite; /* Safari and Chrome */
     animation: sfondohome 8s alternate-reverse linear infinite;
-    animation-iteration-count: infinite;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sfondo2 { 
+	width: auto; 
+	height: 100%;
+	background-image: url(../public/image/taverna.jpg);
+	-webkit-animation: sfondohome 8s alternate-reverse linear infinite; /* Safari and Chrome */
+    animation: sfondohome 8s alternate-reverse linear infinite;
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
@@ -69,4 +114,24 @@ md-card.selected{
 
 .ombra1{
     text-shadow: 1px 1px 1px #ddd;
+}
+
+.creatori{
+    width: 100%; 
+	height: auto;
+    animation: crediti 10s ease-in;
+    animation-iteration-count: 1;
+    
+    /*animation-play-state: 5 paused;*/
+}
+
+.icone{
+    width: auto; 
+	height: auto;
+    animation: movimento 1s alternate-reverse linear infinite;
+    background-repeat: no-repeat;
+}
+
+.finale:last-child {
+    color: red;
 }

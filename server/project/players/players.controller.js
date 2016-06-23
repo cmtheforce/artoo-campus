@@ -8,6 +8,8 @@ module.exports = function () {
     req.checkBody('name').notEmpty();
     //CONTROLLO CHE IL RUOLO INSERITO SIA TRA QUELLI PREVISTI
     req.checkBody('nameRole').isIn(['Guerriero Impazzito','Arciere senza freccia','Mago Somago']);
+    
+    console.log(req.body.name);
     if(req.validationErrors()){
       return res.status(400).send('Bad request');
     }
@@ -15,11 +17,18 @@ module.exports = function () {
       
     Player.create(req.body)
       .then(data => res.status(201).json(data))
-      .catch(err => res.status(500).json(err));
+      .catch(err => {
+        if(err.code === 11000){
+          res.status(406).send('Name already exists');
+        }
+        else{
+          res.status(500).send('Error creating player');
+        }
+      });
   }
   
-  function findByName(req, res){
-    Player.find({name: req.query.name}).exec()
+  function findPlayer(req, res){
+    Player.findByid(req.body['_id']).exec()
     .then((data) => {
       if(data.length > 0){
         res.status(200).json(data);
@@ -33,6 +42,7 @@ module.exports = function () {
     })
   }
   
+  
   function query(req, res){
     Player.find().exec()
     .then((data) => {
@@ -43,8 +53,9 @@ module.exports = function () {
     })
   }
   
+  
+  
   function truncate(req,res){
-   
     Player.remove()
     .then(() => {
       res.status(200).send("Players removed");
@@ -55,8 +66,8 @@ module.exports = function () {
   }
   
   function update(req, res){
-    
-    Player.findByIdAndUpdate(req.body.id, req.body)
+   
+    Player.findByIdAndUpdate(req.body['_id'], req.body)
     .then(() => {
       res.status(200).send('Update player successfully');
     })
@@ -66,7 +77,7 @@ module.exports = function () {
   // public API
   return {
     create : create,
-    findByName: findByName,
+    findPlayer: findPlayer,
     query: query,
     truncate: truncate,
     update: update,
