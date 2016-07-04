@@ -5,8 +5,8 @@ module.exports = [{
                      "da ormai una settimana, riuscite finalmente a scorgere in lontananza il centro cittadino. " +
                      "Sentite in lontananza un gran baccano e intuite (non occorrere essere dei maghi per una volta!) " +
                      "che i festeggiamenti non sono mai stati interrotti, tanto che davanti a voi si presenta " +
-                     "un gruppo di bannati (così viene chiamata la gente della regione) decisamente ubriachi che " + 
-                     "con uno sguardo a dir tanto enigmatico sfoderano i propri boccali e si preparano a lanciarli verso di voi",
+                     "un bannato (così viene chiamata la gente della regione) decisamente ubriaco che " + 
+                     "con uno sguardo a dir tanto enigmatico sfodera i boccali di birra e si prepara a lanciarli verso di voi.",
         monster: "Bannato",
         ability: "",
         abilityUsed: false,

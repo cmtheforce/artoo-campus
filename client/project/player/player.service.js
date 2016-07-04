@@ -39,6 +39,7 @@ angular.module('artoo').service('PlayerSrv', function($state, $mdToast, $resourc
         
         
     this.create = (player) => {
+        
         new Players(player).$save()
         .then(this.queryPlayers)
         .catch((err) => {
@@ -68,19 +69,6 @@ angular.module('artoo').service('PlayerSrv', function($state, $mdToast, $resourc
         });
     }
 
-    // this.selectedPlayer=(player)=>{
-    //     console.log('aaa');
-    //     this.player=player;
-    //     this.getterPlayer();
-    // }
-    
-    
-    // this.getterPlayer=(player)=>{
-    //  console.log("get")
-    //     return this.player
-    // }
-
-
    this.refresh=()=>{
     this.queryPlayers(function (){this.getPlayers();})
    }
@@ -94,8 +82,6 @@ angular.module('artoo').service('PlayerSrv', function($state, $mdToast, $resourc
        return Players.query().$promise;
     }
   
-  
-  
     this.queryPlayers = () => {
         Players.query().$promise
         .then((data) => this.players=data);
@@ -103,14 +89,11 @@ angular.module('artoo').service('PlayerSrv', function($state, $mdToast, $resourc
     };
     
     
-    
     //UPDATE DA FARE
     this.update = (player) => {
         Players.updatePlayer(player).$promise
         .then();
     };
-    
-    
     
     this.getPlayers = () => {
         var list= [];

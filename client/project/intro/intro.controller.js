@@ -20,4 +20,14 @@ angular.module('artoo').controller('IntroCtrl', function(PlayerSrv, $state, Stor
          return crediti = true; 
          else return crediti = false;
     }
+    
+    // this.checkPlayers = () => {
+    //     var numeroPlayer = PlayerSrv.query().then((data) => {
+    //         if(data.length > 0){
+    //             return true;
+    //         }
+    //         return false;
+    //     });
+        
+    // }
 });

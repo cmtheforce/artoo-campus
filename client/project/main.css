@@ -71,17 +71,7 @@ md-card.selected{
 	-webkit-animation: sfondohome 8s alternate-reverse linear infinite; /* Safari and Chrome */
     animation: sfondohome 8s alternate-reverse linear infinite;
     background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.sfondo2 { 
-	width: auto; 
-	height: 100%;
-	background-image: url(../public/image/taverna.jpg);
-	-webkit-animation: sfondohome 8s alternate-reverse linear infinite; /* Safari and Chrome */
-    animation: sfondohome 8s alternate-reverse linear infinite;
-    background-repeat: no-repeat;
-    background-size: cover;
+    
 }
 
 .guerriero{
@@ -118,7 +108,7 @@ md-card.selected{
 
 .creatori{
     width: 100%; 
-	height: auto;
+
     animation: crediti 10s ease-in;
     animation-iteration-count: 1;
     

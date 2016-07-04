@@ -13,7 +13,7 @@
                <span class="md-display-3 ombra1" ui-sref="createCharacter" ng-click="IntroCtrl.resetPlayers()" style="cursor:pointer; height: 8vh; padding: 2%; font-family: 'VT323';">NEW GAME</span>
            </div>
            <div ng-show="!IntroCtrl.credits()" layout="rown" flex layout-align="center">
-               <span class="md-display-3 ombra1" ng-click="IntroCtrl.continue()" style="cursor:pointer; height: 10vh; font-family: 'VT323';">CONTINUE</span>
+               <span  class="md-display-3 ombra1" ng-click="IntroCtrl.continue()" style="cursor:pointer; height: 10vh; font-family: 'VT323';">CONTINUE</span>
            </div>
            <div layout="rown" flex layout-align="center">
                 <span ng-show="!IntroCtrl.credits()" ng-click="IntroCtrl.credits()" class="md-display-3 ombra1" style="cursor:pointer; height: 10vh; font-family: 'VT323';">CREDITS </span>
@@ -22,11 +22,13 @@
             <!-- crediti -->
             <div ng-click="IntroCtrl.credits()" ng-show="IntroCtrl.credits()">
                 <div class="creatori md-display-3" layout="column" layout-margin layout-padding flex style="font-family: 'VT323'; padding: 2%;">
-                    <div layout="row" flex="100" layout-align="center stretch"> App creata da: </div>
+                    <div layout="row" flex="100" layout-align="center stretch"> Con la presenza speciale di David Sorrentino </div>
+                    <p> </p>
                     <div layout="row" flex="100" layout-align="center stretch"> Gabriele</div>
                     <div layout="row" flex="100" layout-align="center stretch"> Raffaele </div>
                     <div layout="row" flex="100" layout-align="center stretch"> Niki </div>
-                    <div layout="row" flex="100" layout-align="center stretch"> Con la presenza speciale di David Sorrentino </div>
+                    <p> </p>
+                    <div layout="row" flex="100" layout-align="center stretch"> App creata da: </div>
                 </div>  
             </div>
            

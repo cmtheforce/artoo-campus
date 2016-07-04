@@ -62,6 +62,7 @@ app.use('/', express.static(path.join(__dirname, '..', 'client')));
 
 // middlewares: create a timeRequest middleware and an ip filter middleware
 // app.use(require('./exercises/middlewares/timeRequest.js'));
+app.use(require('./project/middlewares/connection.js'));
 // routers + controllers
 
 // define here your API

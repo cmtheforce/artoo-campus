@@ -40,7 +40,7 @@ angular.module('artoo').controller('CombatCtrl', function ($timeout, CombatSrv, 
     
     this.updateCombat = (testo) => {
         if(testoCombat.length > 3){
-            var app = testoCombat[2];
+            var app = testoCombat[testoCombat.length-1];
             testoCombat = [];
             testoCombat.push(app);
         }
@@ -108,8 +108,12 @@ angular.module('artoo').controller('CombatCtrl', function ($timeout, CombatSrv, 
                     if(player.hp<=danni){
                         player.hp=0;
                         player.isAlive=0;
+                     this.updateCombat(player.name + " è Morto!");   
+                        
+                    }else{
+                       player.hp -= danni; 
                     }
-                    player.hp -= danni;
+                    
                      
                     PlayerSrv.update(player);
                     this.nextTurn();

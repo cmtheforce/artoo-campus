@@ -29,13 +29,13 @@
             
             <div>
                 <md-card ng-show="CombatCtrl.CombatSrv.getEnableCombat()" >
-                    <img ng-src="{{CombatCtrl.CombatSrv.getMonster().image}}" class="md-card-image" style="width: 200px; height: 150px; padding:4%; margin-left:15%;" alt="Washed Out">
+                    <img ng-src="{{CombatCtrl.CombatSrv.getMonster().image}}" class="md-card-image" style="width: 200px; height: 180px; padding:4%; margin-left:17%;" alt="Washed Out">
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline"> {{CombatCtrl.CombatSrv.getMonster().name}} </span>
                     </md-card-title-text>
                 </md-card-title>
-                <md-card-content style="background: blue; opacity: 0.6; color: white; padding: 2%;">
+                <md-card-content style="background: blue; opacity: 0.8; color: white; padding: 2%;">
                       
                     <div> HP:
                       <md-progress-linear class="hp" md-mode="determinate" value="{{CombatCtrl.barProgression(CombatCtrl.CombatSrv.getMonster().hp,CombatCtrl.CombatSrv.getMonster().hpMax)}}"></md-progress-linear>
